@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Douglas Bonfim — Desenvolvedor Full-Stack</title>
+<meta name="description" content="Douglas Francisco Bonfim — desenvolvedor full-stack em Cascavel/PR. Sistemas web, automação WhatsApp, integrações fiscais e bancárias, apps Android." />
+<link rel="icon" type="image/png" href="img/logo-digitaliza.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0b0f14;
+  --bg-2: #10161f;
+  --card: #141b26;
+  --card-2: #182233;
+  --line: #233047;
+  --txt: #e8edf5;
+  --muted: #93a1b5;
+  --accent: #f97316;
+  --accent-2: #fbbf24;
+  --teal: #2dd4bf;
+  --radius: 18px;
+}
+* { box-sizing: border-box; margin: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--txt);
+  line-height: 1.6;
+}
+h1, h2, h3, .font-display { font-family: Sora, Inter, sans-serif; letter-spacing: -0.02em; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+.wrap { width: min(1100px, 92%); margin: 0 auto; }
+.muted { color: var(--muted); }
+
+/* ---------- IDIOMA ---------- */
+.lang { display: none; }
+body.lang-pt .lang-pt, body.lang-en .lang-en, body.lang-it .lang-it { display: block; }
+.flag-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 32px; border-radius: 9px; cursor: pointer;
+  background: var(--card-2); border: 1px solid var(--line);
+  opacity: .55; transition: opacity .15s, border-color .15s; padding: 0;
+}
+.flag-btn:hover { opacity: .9; }
+.flag-btn.ativo { opacity: 1; border-color: var(--accent); }
+
+#copy-toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--teal); color: #04211c; font-weight: 700; font-size: 14px;
+  padding: 10px 20px; border-radius: 12px; z-index: 90;
+  opacity: 0; transition: opacity .25s ease; pointer-events: none;
+}
+#copy-toast.show { opacity: 1; }
+
+/* ---------- NAV ---------- */
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(11,15,20,.82);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+nav .wrap { display: flex; align-items: center; gap: 22px; padding: 14px 0; }
+.brand { font-family: Sora, sans-serif; font-weight: 800; font-size: 18px; }
+.brand b { color: var(--accent); }
+nav .links { display: flex; gap: 18px; margin-left: auto; align-items: center; }
+nav .links a { font-size: 14px; color: var(--muted); font-weight: 600; }
+nav .links a:hover { color: var(--txt); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 0; cursor: pointer; font: inherit; font-weight: 700; font-size: 14px;
+  padding: 11px 20px; border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), #ea580c);
+  color: #fff; transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(249,115,22,.35); }
+.btn.ghost {
+  background: transparent; color: var(--txt);
+  border: 1px solid var(--line);
+}
+.btn.ghost:hover { border-color: var(--accent); box-shadow: none; }
+.btn.wa { background: linear-gradient(135deg, #22c55e, #16a34a); }
+.btn.wa:hover { box-shadow: 0 10px 30px rgba(34,197,94,.35); }
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  padding: 90px 0 70px;
+}
+.hero::before {
+  content: ""; position: absolute; inset: 0;
+  background:
+    radial-gradient(600px 300px at 15% 10%, rgba(249,115,22,.18), transparent 60%),
+    radial-gradient(500px 280px at 85% 20%, rgba(45,212,191,.12), transparent 60%);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.4fr .9fr; gap: 40px; align-items: center; }
+.tag {
+  display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent-2);
+  border: 1px solid rgba(251,191,36,.35); border-radius: 999px; padding: 5px 14px;
+  margin-bottom: 18px; background: rgba(251,191,36,.06);
+}
+.hero h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; line-height: 1.1; }
+.hero h1 span { background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero .sub { font-size: 17px; color: var(--muted); margin: 16px 0 26px; max-width: 560px; }
+.hero .sub b { color: var(--txt); }
+.cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.avatar {
+  width: 190px; height: 190px; margin: 0 auto; border-radius: 34px;
+  overflow: hidden;
+  font-family: Sora, sans-serif; font-size: 64px; font-weight: 800; color: #fff;
+  background: linear-gradient(145deg, #f97316, #b45309 60%, #2dd4bf 140%);
+  box-shadow: 0 24px 60px rgba(249,115,22,.3);
+  position: relative;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar::after {
+  content: ""; position: absolute; inset: -10px; border-radius: 42px;
+  border: 1px dashed rgba(249,115,22,.4);
+}
+.hero-card { text-align: center; }
+.hero-card .loc { margin-top: 18px; font-size: 14px; color: var(--muted); }
+.hero-card .loc b { color: var(--txt); display: block; font-size: 15px; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 50px; }
+.stat {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 18px; text-align: center;
+}
+.stat b { display: block; font-family: Sora, sans-serif; font-size: 30px; color: var(--accent-2); }
+.stat span { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+
+/* ---------- SECTIONS ---------- */
+section { padding: 64px 0; }
+.sec-head { margin-bottom: 34px; }
+.sec-head .kicker { font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); }
+.sec-head h2 { font-size: clamp(26px, 3.6vw, 38px); margin-top: 6px; }
+.sec-head p { color: var(--muted); max-width: 640px; margin-top: 8px; }
+
+.about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 24px; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 26px;
+}
+.card h3 { font-size: 18px; margin-bottom: 10px; }
+.info-list { list-style: none; padding: 0; display: grid; gap: 10px; }
+.info-list li { display: flex; gap: 10px; font-size: 14px; align-items: baseline; }
+.info-list .ico { flex: 0 0 22px; }
+.info-list b { color: var(--accent-2); font-weight: 600; }
+.info-list a { color: var(--teal); word-break: break-all; }
+.info-list a:hover { text-decoration: underline; }
+
+/* ---------- PROJETOS ---------- */
+.proj-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.proj {
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 24px; transition: transform .15s ease, border-color .15s ease;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.proj:hover { transform: translateY(-4px); border-color: var(--accent); }
+.proj .top { display: flex; align-items: center; gap: 12px; }
+.proj .pico {
+  width: 46px; height: 46px; flex: 0 0 46px; border-radius: 13px;
+  display: grid; place-items: center; font-size: 22px;
+  background: var(--card-2); border: 1px solid var(--line);
+}
+.proj h3 { font-size: 17px; }
+.proj .cat { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal); }
+.proj p { font-size: 14px; color: var(--muted); flex: 1; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  font-size: 11px; font-weight: 600; color: var(--muted);
+  background: var(--card-2); border: 1px solid var(--line);
+  border-radius: 999px; padding: 3px 10px;
+}
+
+/* ---------- SKILLS ---------- */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.skill-block h3 { font-size: 15px; margin-bottom: 12px; color: var(--accent-2); }
+.skill-block .chips .chip { font-size: 12px; padding: 5px 12px; color: var(--txt); }
+
+/* ---------- LISTA COMPACTA ---------- */
+.mini-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px 28px; }
+.mini-list li { list-style: none; font-size: 14px; padding: 10px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+.mini-list b { color: var(--accent-2); font-weight: 600; }
+
+/* ---------- CONTATO / FOOTER ---------- */
+.contact-card {
+  text-align: center; padding: 56px 24px;
+  background: linear-gradient(160deg, var(--card-2), var(--card));
+  border: 1px solid var(--line); border-radius: 26px;
+}
+.contact-card h2 { font-size: clamp(26px, 4vw, 38px); margin-bottom: 10px; }
+.contact-card p { color: var(--muted); margin-bottom: 26px; }
+footer { padding: 34px 0; border-top: 1px solid var(--line); }
+footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+
+/* ---------- DOCUMENTO / PDF ---------- */
+.doc-wrap { display: none; }
+.print-cv {
+  width: min(820px, 92%); margin: 0 auto;
+  background: #fff; color: #1a1a1a;
+  padding: 0;
+  font-family: Inter, Arial, sans-serif;
+  line-height: 1.55;
+}
+.print-cv h1 { font-family: Sora, sans-serif; font-size: 24pt; margin-bottom: 2px; color: #111; }
+.print-cv .cargo { font-size: 12.5pt; color: #b45309; font-weight: 600; margin-bottom: 8px; }
+.print-cv .contato { font-size: 9.5pt; color: #444; margin-bottom: 6px; line-height: 1.7; }
+.print-cv h2 {
+  font-family: Sora, sans-serif;
+  font-size: 12pt; text-transform: uppercase; letter-spacing: .08em;
+  border-bottom: 1.5px solid #222; padding-bottom: 3px; margin: 16px 0 8px; color: #111;
+}
+.print-cv p, .print-cv li { font-size: 10.5pt; }
+.print-cv ul { padding-left: 18px; }
+.print-cv li { margin-bottom: 4px; }
+.print-cv .proj-cv { margin-bottom: 8px; }
+.print-cv .proj-cv b { font-size: 11pt; }
+.print-cv .skills-line { font-size: 10pt; margin-bottom: 5px; }
+.print-cv .skills-line b { display: inline-block; min-width: 170px; }
+
+
+
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-card { order: -1; }
+  .avatar { width: 130px; height: 130px; font-size: 44px; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .proj-grid, .skills-grid, .mini-list { grid-template-columns: 1fr; }
+  nav .links a { display: none; }
+}
+
+@media print {
+  body { background: #fff; color: #111; font-size: 11pt; }
+  .site, nav { display: none !important; }
+  .doc-wrap { display: block; padding: 0; }
+  .print-cv {
+    width: 100%; margin: 0; padding: 0;
+    border-radius: 0; box-shadow: none;
+  }
+  .print-cv .cargo { color: #444; }
+  @page { margin: 14mm; }
+}
+</style>
+</head>
+<body class="lang-pt">
+
+<!-- ===================== NAV ===================== -->
+<nav>
+  <div class="wrap">
+    <span class="brand">Douglas<b>.</b>Bonfim</span>
+    <div class="links">
+      <a class="nav-i18n" data-sec="sobre" href="#sobre">Sobre</a>
+      <a class="nav-i18n" data-sec="sistemas" href="#sistemas">Sistemas</a>
+      <a class="nav-i18n" data-sec="infra" href="#infra">Infraestrutura</a>
+      <a class="nav-i18n" data-sec="skills" href="#skills">Skills</a>
+      <a class="nav-i18n" data-sec="contato" href="#contato">Contato</a>
+      <button class="flag-btn ativo" id="flag-pt" onclick="setLang('pt')" title="Português (Brasil)" aria-label="Português">
+        <svg viewBox="0 0 28 20" width="24" height="17"><rect width="28" height="20" rx="3" fill="#009b3a"/><path d="M14 3.2 24.6 10 14 16.8 3.4 10Z" fill="#fedf00"/><circle cx="14" cy="10" r="3.5" fill="#002776"/><path d="M11.6 8.1a6.6 6.6 0 0 1 4.9 3.2" stroke="#fff" stroke-width=".8" fill="none"/></svg>
+      </button>
+      <button class="flag-btn" id="flag-it" onclick="setLang('it')" title="Italiano" aria-label="Italiano">
+        <svg viewBox="0 0 28 20" width="24" height="17"><defs><clipPath id="clipit"><rect width="28" height="20" rx="3"/></clipPath></defs><g clip-path="url(#clipit)"><rect width="9.4" height="20" fill="#009246"/><rect x="9.4" width="9.2" height="20" fill="#fff"/><rect x="18.6" width="9.4" height="20" fill="#ce2b37"/></g></svg>
+      </button>
+      <button class="flag-btn" id="flag-en" onclick="setLang('en')" title="English (US)" aria-label="English">
+        <svg viewBox="0 0 28 20" width="24" height="17"><rect width="28" height="20" rx="3" fill="#b22234"/><g fill="#fff"><rect y="1.54" width="28" height="1.54"/><rect y="4.62" width="28" height="1.54"/><rect y="7.69" width="28" height="1.54"/><rect y="10.77" width="28" height="1.54"/><rect y="13.85" width="28" height="1.54"/><rect y="16.92" width="28" height="1.54"/></g><rect width="12" height="10.8" rx="1.5" fill="#3c3b6e"/><g fill="#fff"><circle cx="2.4" cy="2.2" r=".8"/><circle cx="6" cy="2.2" r=".8"/><circle cx="9.6" cy="2.2" r=".8"/><circle cx="4.2" cy="4.2" r=".8"/><circle cx="7.8" cy="4.2" r=".8"/><circle cx="2.4" cy="6.2" r=".8"/><circle cx="6" cy="6.2" r=".8"/><circle cx="9.6" cy="6.2" r=".8"/><circle cx="4.2" cy="8.2" r=".8"/><circle cx="7.8" cy="8.2" r=".8"/></g></svg>
+      </button>
+      <button class="btn" onclick="window.print()">📄 Imprimir PDF</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== CONTEÚDO PT-BR ===================== -->
+<div class="lang lang-pt">
+
+<!-- ===================== CURRÍCULO (documento) ===================== -->
+<div class="doc-wrap">
+  <div class="print-cv">
+    <h1>Douglas Francisco Bonfim</h1>
+    <p class="cargo">Desenvolvedor Full-Stack &amp; Analista de Sistemas</p>
+    <p class="contato">
+      Cascavel — Paraná, Brasil · (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
+      linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · digitalizaapp.tech/curriculo<br/>
+      Casado, dois filhos · Veículo próprio (disponível para deslocamento)
+    </p>
+
+    <h2>Resumo</h2>
+    <p>Desenvolvedor full-stack com mais de 25 sistemas entregues e em produção: plataformas web,
+    aplicativos Android, automação de WhatsApp, integrações fiscais (NF-e/NFC-e, SEFAZ) e bancárias
+    (boletos FEBRABAN/CNAB), serviços Windows, integração com hardware industrial e deploy em VPS
+    Linux com Docker.</p>
+
+    <h2>Competências técnicas</h2>
+    <p class="skills-line"><b>Linguagens:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
+    <p class="skills-line"><b>Bancos:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — triggers, views, replicação</p>
+    <p class="skills-line"><b>Integrações:</b> NF-e/NFC-e e status SEFAZ, boletos FEBRABAN/CNAB (Code 128), ERP Protheus, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
+    <p class="skills-line"><b>Infra &amp; Linux:</b> administração de VPS Ubuntu, Docker/Docker Compose, Caddy com HTTPS, SSH, DNS, firewall, scripts de deploy em Bash/PowerShell</p>
+    <p class="skills-line"><b>Hardware &amp; protocolos:</b> medidores TSL 350 (TCP/hex), DLL CompanyTec, NFC, serial, DVRIP (câmeras), impressoras Godex/ZPL, Windows Services</p>
+    <p class="skills-line"><b>Versionamento &amp; rede:</b> Git em todos os projetos, auto-update via GitHub Releases com fallback FTP, VPN própria (WireGuard)</p>
+    <p class="skills-line"><b>IA &amp; automação:</b> Ollama/LLM local, Stable Diffusion, OCR, relatórios agendados, cobrança automática</p>
+
+    <h2>Projetos em destaque</h2>
+    <div class="proj-cv"><b>DTC AXIS — Plataforma de BI para postos de combustível.</b> Dashboards, monitoramento fiscal SEFAZ em tempo real, boletos, cobrança por WhatsApp e assistente de IA local. (Flask + React + PostgreSQL + Ollama)</div>
+    <div class="proj-cv"><b>Portal do Cliente.</b> Extrato de frotas, faturas e boletos bancários de 7 bancos com código de barras Code 128 em PDF. (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync.</b> Servidor central de APIs + agente Windows com auto-atualização instalado em cada cliente. (FastAPI + Windows Service + GitHub Releases + fallback FTP)</div>
+    <div class="proj-cv"><b>Automação WhatsApp.</b> Cobrança e disparo em massa com painel web, sessão persistente e alertas integrados. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Frota.</b> Gestão de abastecimento integrada a medidores de tanque por TCP/IP, com app Android NFC e app de OCR. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Acesso Remoto próprio.</b> Ferramenta estilo AnyDesk construída do zero com Electron + socket.io.</div>
+    <div class="proj-cv"><b>Digitaliza — SaaS multi-tenant.</b> Plataforma de agendamento e gestão para redes de empresas (este site), com API FastAPI, PostgreSQL e Docker em VPS.</div>
+
+    <h2>Informações adicionais</h2>
+    <ul>
+      <li>Disponibilidade para projetos presenciais e remotos; veículo próprio.</li>
+      <li>Experiência com suporte a cliente, implantação e treinamento de sistemas.</li>
+      <li>Mais de 25 projetos desenvolvidos — portfólio em digitalizaapp.tech/curriculo e github.com/DouglasFBonfim.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===================== VERSÃO WEB (portfólio) ===================== -->
+<div class="site">
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Disponível para projetos</span>
+      <h1>Douglas Francisco <span>Bonfim</span></h1>
+      <p class="sub">
+        Desenvolvedor <b>full-stack</b> e analista de sistemas. Construo <b>sistemas web</b>,
+        <b>apps Android</b>, <b>automações de WhatsApp</b>, integrações <b>fiscais e bancárias</b>
+        e ferramentas que rodam em produção de verdade — do banco de dados ao deploy na VPS.
+      </p>
+      <div class="cta">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">E-mail</a>
+        <button class="btn" onclick="window.print()">📄 Imprimir currículo</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar"><img src="img/douglas.jpg" alt="Douglas Bonfim" /></div>
+      <p class="loc"><b>Cascavel — Paraná, Brasil</b>Veículo próprio · disponível para deslocamento</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>25+</b><span>sistemas entregues</span></div>
+      <div class="stat"><b>6+</b><span>linguagens</span></div>
+      <div class="stat"><b>10+</b><span>integrações e protocolos</span></div>
+      <div class="stat"><b>100%</b><span>em produção real</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Sobre mim</span>
+      <h2>Quem é o Douglas</h2>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3>Perfil</h3>
+        <p class="muted">
+          Desenvolvedor autodidata e orientado a produto. Crio soluções completas de ponta a ponta:
+          APIs, painéis web, aplicativos Android, serviços Windows, automações de mensageria e
+          integrações com hardware fiscal e bancário. Meu forte é transformar processos manuais
+          em sistemas que trabalham sozinhos — com monitoramento, relatórios automáticos e
+          cobrança por WhatsApp.
+        </p>
+        <p class="muted" style="margin-top:12px">
+          Casado, pai de dois filhos, moro em Cascavel/PR e tenho veículo próprio para me
+          deslocar entre clientes e empresas.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Informações</h3>
+        <ul class="info-list">
+          <li><span class="ico">📍</span><span><b>Cascavel</b> — Paraná, Brasil</span></li>
+          <li><span class="ico">📱</span><span><a href="https://wa.me/5545999021760">(45) 99902-1760</a></span></li>
+          <li><span class="ico">✉️</span><span><a href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a></span></li>
+          <li><span class="ico">💼</span><span><a href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">linkedin.com/in/douglas-b-a1275686</a></span></li>
+          <li><span class="ico">💻</span><span><a href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">github.com/DouglasFBonfim</a></span></li>
+          <li><span class="ico">🚗</span><span>Veículo próprio — <b>disponível para deslocamento</b></span></li>
+          <li><span class="ico">👨‍👩‍👧‍👦</span><span>Casado, dois filhos</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemas" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Portfólio</span>
+      <h2>Sistemas que eu construí</h2>
+      <p>Produtos reais, em produção: plataformas web, apps Android, agentes de automação,
+      integrações fiscais/bancárias e ferramentas de infraestrutura.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📊</span><div><h3>DTC AXIS — Plataforma de BI</h3><span class="cat">Sistema web · produto</span></div></div>
+        <p>Plataforma completa de gestão para postos de combustível: dashboards de vendas,
+        financeiro e inventário, monitoramento fiscal SEFAZ (NF-e/NFC-e em tempo real),
+        boletos FEBRABAN, cobrança automática por WhatsApp e assistente de IA integrado a LLM local.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React 19 + TS</span><span class="chip">PostgreSQL</span><span class="chip">whatsapp-web.js</span><span class="chip">Ollama / IA</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🌐</span><div><h3>Portal do Cliente</h3><span class="cat">Sistema web full-stack · produto</span></div></div>
+        <p>Área logada para gestão de frotas: extrato de consumo, faturas, boletos com código de
+        barras Code 128 (Itaú, Bradesco, BB, Santander, Caixa, Sicredi, Sicoob) renderizados em
+        PDF, pedágios, mapas e gestão de usuários com sessões.</p>
+        <div class="chips"><span class="chip">Node/Express</span><span class="chip">React 19 + Vite</span><span class="chip">PostgreSQL</span><span class="chip">Boletos FEBRABAN</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecossistema distribuído</h3><span class="cat">Servidor central + agente Windows</span></div></div>
+        <p>Arquitetura distribuída: servidor central com API REST pública (FastAPI, Swagger,
+        métricas, VPN WireGuard) + agente instalado em cada cliente com auto-atualização via
+        GitHub Releases, watchdog como serviço Windows e interface local de configuração.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">💬</span><div><h3>Automação WhatsApp</h3><span class="cat">Mensageria · produção</span></div></div>
+        <p>Módulo de cobrança e disparo em massa via WhatsApp com painel web: sessão por QR Code,
+        filas de envio, lembretes, agenda de chamados e alertas automáticos integrados aos
+        sistemas de monitoramento.</p>
+        <div class="chips"><span class="chip">whatsapp-web.js</span><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">QR / sessão persistente</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">⛽</span><div><h3>DTC Frota — Gestão de abastecimento</h3><span class="cat">Automação industrial + apps Android</span></div></div>
+        <p>Backend que conversa com medidores de tanque TSL 350 via TCP/IP e comandos hexadecimais,
+        controla bicos por DLL, e alimenta app Android com leitura de tags NFC e app de OCR que
+        lê hodômetro e placa pela câmera.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Android Java/Kotlin</span><span class="chip">NFC</span><span class="chip">OCR</span><span class="chip">TCP/IP + hex</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>Acesso Remoto próprio</h3><span class="cat">Ferramenta · estilo AnyDesk</span></div></div>
+        <p>Ferramenta de acesso remoto construída do zero: agente Electron com captura de tela e
+        controle de mouse/teclado, servidor de sinalização com viewer web e conexão automática —
+        empacotado como executável portátil.</p>
+        <div class="chips"><span class="chip">Electron</span><span class="chip">socket.io</span><span class="chip">nut-js</span><span class="chip">Express</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📱</span><div><h3>Digitaliza — ERP + App Android</h3><span class="cat">Sistema web + app offline-first</span></div></div>
+        <p>ERP comercial com PDV, vendas, compras, estoque, contas a pagar/receber e licenciamento —
+        com app Android offline-first (Room, sync pull/push) e esta plataforma SaaS multi-tenant
+        que você está acessando agora.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Android + Room</span><span class="chip">Docker + Caddy</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🤖</span><div><h3>DigitalizaIA — Assistente de IA local</h3><span class="cat">Inteligência artificial</span></div></div>
+        <p>Assistente de IA rodando 100% local: conversa, escrita de código em workspace, pesquisa
+        web e geração de imagens com Stable Diffusion na GPU — tudo sem depender de nuvem.</p>
+        <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">GPU local</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="infra">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Operação</span>
+      <h2>Infraestrutura própria, do zero</h2>
+      <p>Não é só código de sistema: eu construí a infraestrutura inteira que mantém os
+      produtos rodando e se atualizando sozinhos em dezenas de clientes.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔀</span><div><h3>Versionamento e distribuição</h3><span class="cat">Git + GitHub Releases + FTP</span></div></div>
+        <p>Todos os apps e módulos são versionados em Git com releases publicados no GitHub.
+        Os agentes instalados nos clientes se auto-atualizam baixando a release mais recente —
+        e se o GitHub falhar, existe <b>fallback automático via FTP</b> próprio.</p>
+        <div class="chips"><span class="chip">Git / GitHub Releases</span><span class="chip">Fallback FTP</span><span class="chip">Auto-update</span><span class="chip">Repos por módulo</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔐</span><div><h3>VPN própria</h3><span class="cat">Rede privada WireGuard</span></div></div>
+        <p>Rede VPN própria com WireGuard conectando o servidor central aos clientes —
+        acesso remoto seguro aos bancos e serviços de cada unidade sem expor nada na internet
+        aberta, integrado ao servidor de sincronização.</p>
+        <div class="chips"><span class="chip">WireGuard</span><span class="chip">Rede privada</span><span class="chip">Acesso remoto seguro</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🛰️</span><div><h3>Servidor central de monitoramento</h3><span class="cat">API pública + helpdesk</span></div></div>
+        <p>Servidor central que recebe status, ocorrências e telemetria de todos os clientes:
+        API REST documentada (Swagger/OpenAPI), consumo atômico de flags de execução,
+        abertura automática de chamados, agenda integrada e métricas de operação.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Swagger/OpenAPI</span><span class="chip">Métricas</span><span class="chip">Chamados automáticos</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🧩</span><div><h3>Arquitetura de módulos no cliente</h3><span class="cat">Agentes + serviços Windows</span></div></div>
+        <p>Cada cliente roda um agente (serviço Windows com watchdog) que instala e mantém os
+        módulos — PontoBR, Dashboard, Portal, WhatsApp, Coletor. Atualização, configuração e
+        saúde de cada módulo são gerenciadas remotamente pelo servidor central.</p>
+        <div class="chips"><span class="chip">Windows Service</span><span class="chip">Watchdog</span><span class="chip">PyInstaller</span><span class="chip">Bandeja/systray</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🐧</span><div><h3>Servidores Linux em produção</h3><span class="cat">VPS · hospedagem própria</span></div></div>
+        <p>Administro VPS Linux (Ubuntu) de ponta a ponta: Docker e Docker Compose, proxy reverso
+        Caddy com HTTPS automático (Let's Encrypt), DNS, firewall, SSH com chave, scripts de
+        deploy em shell e PowerShell — esta plataforma roda nessa infraestrutura.</p>
+        <div class="chips"><span class="chip">Ubuntu / VPS</span><span class="chip">Docker Compose</span><span class="chip">Caddy + HTTPS</span><span class="chip">SSH / DNS / firewall</span><span class="chip">Bash &amp; PowerShell</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Stack</span>
+      <h2>Skills técnicas</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="card skill-block">
+        <h3>Linguagens & Frameworks</h3>
+        <div class="chips">
+          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
+          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">SQL avançado</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Bancos de dados</h3>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Triggers & views</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Integrações Brasil</h3>
+        <div class="chips">
+          <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">Boletos FEBRABAN / CNAB</span>
+          <span class="chip">Código de barras Code 128</span><span class="chip">ERP Protheus</span><span class="chip">SINTEGRA</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Automação & Mensageria</h3>
+        <div class="chips">
+          <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">E-mail SMTP/HTML</span>
+          <span class="chip">Windows Services / watchdog</span><span class="chip">Relatórios agendados</span><span class="chip">Auto-update</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Hardware & Protocolos</h3>
+        <div class="chips">
+          <span class="chip">Medidor TSL 350 (TCP/hex)</span><span class="chip">DVRIP/Sofia (câmeras)</span>
+          <span class="chip">NFC</span><span class="chip">Serial / FTP</span><span class="chip">Impressoras Godex/ZPL</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>DevOps &amp; Linux</h3>
+        <div class="chips">
+          <span class="chip">Linux Ubuntu / VPS</span><span class="chip">Docker / Compose</span>
+          <span class="chip">Caddy / HTTPS</span><span class="chip">SSH / DNS / firewall</span>
+          <span class="chip">GitHub Releases + FTP</span><span class="chip">VPN WireGuard</span>
+          <span class="chip">PyInstaller</span><span class="chip">Bash / PowerShell</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Inteligência artificial</h3>
+        <div class="chips">
+          <span class="chip">Ollama / LLM local</span><span class="chip">Stable Diffusion</span>
+          <span class="chip">OCR (placas, hodômetro, PDFs)</span><span class="chip">Agentes sobre dados do ERP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ecossistema</span>
+      <h2>Módulos instalados nos clientes</h2>
+      <p>Cada módulo é um produto independente, versionado e atualizado remotamente pelo servidor central.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📅</span><div><h3>Módulo PontoBR</h3><span class="cat">Agendador de relatórios</span></div></div>
+        <p>Agendador que roda no cliente executando consultas SQL programadas (diárias, semanais,
+        mensais) no PostgreSQL e enviando relatórios HTML por e-mail — incluindo cobrança
+        automática com boleto anexado e monitor de ocorrências.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SMTP</span><span class="chip">Boletos anexados</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Módulo Coletor</h3><span class="cat">App Android</span></div></div>
+        <p>Aplicativo Android de coleta de dados em campo integrado ao ecossistema —
+        operação mobile sincronizada com o servidor central.</p>
+        <div class="chips"><span class="chip">Kotlin</span><span class="chip">Android</span><span class="chip">Gradle</span><span class="chip">Sync</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🏪</span><div><h3>Módulo Portal do Cliente</h3><span class="cat">Área logada web</span></div></div>
+        <p>Portal que o cliente final usa para ver extrato de frota, faturas, boletos e pedágios —
+        com gestão de usuários e perfis própria.</p>
+        <div class="chips"><span class="chip">Express</span><span class="chip">React + Vite</span><span class="chip">Boletos PDF</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Portal interno</span></div></div>
+        <p>Portal de monitoramento de toda a base de clientes: ocorrências, licenças por empresa,
+        abertura automática de chamados no helpdesk com roteamento por técnico, agenda, alertas
+        WhatsApp e relatórios de status SEFAZ em PDF.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+    </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <h2 style="font-size:24px">E mais ferramentas</h2>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Backup</b> — backup agendado de PostgreSQL, MySQL, SQL Server e Oracle com painel web e senhas cifradas.</li>
+      <li><b>Cam Monitor</b> — descoberta e snapshot de câmeras/DVRs na rede implementando o protocolo DVRIP/Sofia.</li>
+      <li><b>Consulta Boletos</b> — consulta e regenera boletos FEBRABAN com código de barras a partir do ERP.</li>
+      <li><b>Integração Contábil</b> — sincroniza planos de contas entre empresas no PostgreSQL.</li>
+      <li><b>Atualizador de Relatórios</b> — hub cliente/servidor com API REST, sincronização transacional e monitoramento multi-banco.</li>
+      <li><b>Ajuste MS-DOS</b> — importa e corrige arquivos TXT legados de estoque para o banco.</li>
+      <li><b>Catálogo de Projetos</b> — servidor web que organiza PDFs por tema com extração de texto e OCR.</li>
+      <li><b>Mercadinho do Bairro</b> — jogo simulador de supermercado em desenvolvimento (Unreal Engine 5).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contato">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Vamos conversar?</h2>
+      <p>Precisa de um sistema, automação ou integração? Me chama no WhatsApp ou no LinkedIn.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">(45) 99902-1760</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" onclick="window.print()">📄 Baixar currículo em PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Douglas Francisco Bonfim — Cascavel/PR</span>
+    <span>Desenvolvido por mim</span>
+  </div>
+</footer>
+</div>
+</div><!-- /lang-pt -->
+
+<!-- ===================== CONTEÚDO EN-US ===================== -->
+<div class="lang lang-en">
+
+<div class="doc-wrap">
+  <div class="print-cv">
+    <h1>Douglas Francisco Bonfim</h1>
+    <p class="cargo">Full-Stack Developer &amp; Systems Analyst</p>
+    <p class="contato">
+      Cascavel — Paraná, Brazil · +55 (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
+      linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · digitalizaapp.tech/curriculo<br/>
+      Married, two children · Own car (available to travel/commute)
+    </p>
+
+    <h2>Summary</h2>
+    <p>Full-stack developer with 25+ systems delivered and running in production: web platforms,
+    Android apps, WhatsApp automation, fiscal integrations (NF-e/NFC-e, SEFAZ) and banking
+    (FEBRABAN/CNAB payment slips), Windows services, industrial hardware integration and
+    deployment on Linux VPS with Docker.</p>
+
+    <h2>Technical skills</h2>
+    <p class="skills-line"><b>Languages:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
+    <p class="skills-line"><b>Databases:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — triggers, views, replication</p>
+    <p class="skills-line"><b>Integrations:</b> NF-e/NFC-e and SEFAZ status, FEBRABAN/CNAB bank slips (Code 128), Protheus ERP, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
+    <p class="skills-line"><b>Infra &amp; Linux:</b> Ubuntu VPS administration, Docker/Docker Compose, Caddy with HTTPS, SSH, DNS, firewall, Bash/PowerShell deploy scripts</p>
+    <p class="skills-line"><b>Hardware &amp; protocols:</b> TSL 350 tank gauges (TCP/hex), CompanyTec DLL, NFC, serial, DVRIP (cameras), Godex/ZPL printers, Windows Services</p>
+    <p class="skills-line"><b>Versioning &amp; network:</b> Git on every project, auto-update via GitHub Releases with FTP fallback, self-hosted VPN (WireGuard)</p>
+    <p class="skills-line"><b>AI &amp; automation:</b> Ollama/local LLMs, Stable Diffusion, OCR, scheduled reports, automated billing</p>
+
+    <h2>Featured projects</h2>
+    <div class="proj-cv"><b>DTC AXIS — BI platform for gas stations.</b> Dashboards, real-time SEFAZ fiscal monitoring, bank slips, WhatsApp billing and a local-AI assistant. (Flask + React + PostgreSQL + Ollama)</div>
+    <div class="proj-cv"><b>Customer Portal.</b> Fleet statements, invoices and bank slips for 7 banks with Code 128 barcodes rendered to PDF. (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync.</b> Central API server + self-updating Windows agent installed at each customer site. (FastAPI + Windows Service + GitHub Releases + FTP fallback)</div>
+    <div class="proj-cv"><b>WhatsApp Automation.</b> Bulk billing and messaging with a web panel, persistent session and integrated alerts. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Fleet.</b> Fuel management integrated with tank gauges over TCP/IP, plus an Android NFC app and an OCR camera app. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Custom Remote Access.</b> An AnyDesk-style remote desktop tool built from scratch with Electron + socket.io.</div>
+    <div class="proj-cv"><b>Digitaliza — multi-tenant SaaS.</b> Scheduling and management platform for company networks (this very site), FastAPI + PostgreSQL + Docker on a VPS.</div>
+
+    <h2>Additional information</h2>
+    <ul>
+      <li>Available for on-site and remote projects; own car.</li>
+      <li>Experienced in customer support, deployment and system training.</li>
+      <li>25+ projects developed — portfolio at digitalizaapp.tech/curriculo and github.com/DouglasFBonfim.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="site">
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Available for projects</span>
+      <h1>Douglas Francisco <span>Bonfim</span></h1>
+      <p class="sub">
+        <b>Full-stack</b> developer and systems analyst. I build <b>web systems</b>,
+        <b>Android apps</b>, <b>WhatsApp automations</b>, <b>fiscal and banking integrations</b>
+        and tools that run in real production — from the database to VPS deployment.
+      </p>
+      <div class="cta">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">E-mail</a>
+        <button class="btn" onclick="window.print()">📄 Print resume</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar"><img src="img/douglas.jpg" alt="Douglas Bonfim" /></div>
+      <p class="loc"><b>Cascavel — Paraná, Brazil</b>Own car · available to travel/commute</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>25+</b><span>systems delivered</span></div>
+      <div class="stat"><b>6+</b><span>languages</span></div>
+      <div class="stat"><b>10+</b><span>integrations &amp; protocols</span></div>
+      <div class="stat"><b>100%</b><span>in real production</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="sobre-en">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">About me</span>
+      <h2>Who is Douglas</h2>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3>Profile</h3>
+        <p class="muted">
+          Self-taught, product-driven developer. I build complete end-to-end solutions:
+          APIs, web dashboards, Android apps, Windows services, messaging automations and
+          integrations with fiscal and banking hardware. My strength is turning manual
+          processes into systems that run by themselves — with monitoring, automatic
+          reports and WhatsApp billing.
+        </p>
+        <p class="muted" style="margin-top:12px">
+          Married, father of two, living in Cascavel/PR, Brazil, with my own car
+          to commute between customers and companies.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Details</h3>
+        <ul class="info-list">
+          <li><span class="ico">📍</span><span><b>Cascavel</b> — Paraná, Brazil</span></li>
+          <li><span class="ico">📱</span><span><a href="https://wa.me/5545999021760">+55 (45) 99902-1760</a></span></li>
+          <li><span class="ico">✉️</span><span><a href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a></span></li>
+          <li><span class="ico">💼</span><span><a href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">linkedin.com/in/douglas-b-a1275686</a></span></li>
+          <li><span class="ico">💻</span><span><a href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">github.com/DouglasFBonfim</a></span></li>
+          <li><span class="ico">🚗</span><span>Own car — <b>available to travel/commute</b></span></li>
+          <li><span class="ico">👨‍👩‍👧‍👦</span><span>Married, two children</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemas-en" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Portfolio</span>
+      <h2>Systems I built</h2>
+      <p>Real products, in production: web platforms, Android apps, automation agents,
+      fiscal/banking integrations and infrastructure tooling.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📊</span><div><h3>DTC AXIS — BI Platform</h3><span class="cat">Web system · product</span></div></div>
+        <p>Complete management platform for gas stations: sales/finance/inventory dashboards,
+        real-time SEFAZ fiscal monitoring (NF-e/NFC-e), FEBRABAN bank slips, automatic WhatsApp
+        billing and an AI assistant powered by a local LLM.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React 19 + TS</span><span class="chip">PostgreSQL</span><span class="chip">whatsapp-web.js</span><span class="chip">Ollama / AI</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🌐</span><div><h3>Customer Portal</h3><span class="cat">Full-stack web system · product</span></div></div>
+        <p>Logged-in area for fleet management: consumption statements, invoices, bank slips with
+        Code 128 barcodes (Itaú, Bradesco, BB, Santander, Caixa, Sicredi, Sicoob) rendered to
+        PDF, tolls, maps and user/session management.</p>
+        <div class="chips"><span class="chip">Node/Express</span><span class="chip">React 19 + Vite</span><span class="chip">PostgreSQL</span><span class="chip">FEBRABAN slips</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Distributed ecosystem</h3><span class="cat">Central server + Windows agent</span></div></div>
+        <p>Distributed architecture: central server with a public REST API (FastAPI, Swagger,
+        metrics, WireGuard VPN) plus an agent installed at each customer with auto-update via
+        GitHub Releases, watchdog as a Windows service and a local config UI.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">💬</span><div><h3>WhatsApp Automation</h3><span class="cat">Messaging · production</span></div></div>
+        <p>Bulk billing and messaging module via WhatsApp with a web panel: QR-code session,
+        send queues, reminders, ticket scheduling and automatic alerts integrated with the
+        monitoring systems.</p>
+        <div class="chips"><span class="chip">whatsapp-web.js</span><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">QR / persistent session</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">⛽</span><div><h3>DTC Fleet — Fuel management</h3><span class="cat">Industrial automation + Android apps</span></div></div>
+        <p>Backend that talks to TSL 350 tank gauges over TCP/IP with hexadecimal commands,
+        controls pumps through a DLL, and feeds an Android app with NFC tag reading plus an OCR
+        app that reads the odometer and license plate through the camera.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Android Java/Kotlin</span><span class="chip">NFC</span><span class="chip">OCR</span><span class="chip">TCP/IP + hex</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>Custom Remote Access</h3><span class="cat">Tool · AnyDesk-style</span></div></div>
+        <p>Remote access tool built from scratch: an Electron agent with screen capture and
+        mouse/keyboard control, a signaling server with a web viewer, and automatic connection —
+        shipped as a portable executable.</p>
+        <div class="chips"><span class="chip">Electron</span><span class="chip">socket.io</span><span class="chip">nut-js</span><span class="chip">Express</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📱</span><div><h3>Digitaliza — ERP + Android app</h3><span class="cat">Web system + offline-first app</span></div></div>
+        <p>Commercial ERP with POS, sales, purchasing, inventory, payables/receivables and
+        licensing — with an offline-first Android app (Room, pull/push sync) and the multi-tenant
+        SaaS platform you are browsing right now.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Android + Room</span><span class="chip">Docker + Caddy</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🤖</span><div><h3>DigitalizaIA — Local AI assistant</h3><span class="cat">Artificial intelligence</span></div></div>
+        <p>Fully local AI assistant: chat, code writing in a workspace, web search and image
+        generation with Stable Diffusion on the GPU — no cloud dependency at all.</p>
+        <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">Local GPU</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="infra-en">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Operations</span>
+      <h2>Self-built infrastructure, from scratch</h2>
+      <p>It is not just application code: I built the entire infrastructure that keeps the
+      products running and self-updating across dozens of customer sites.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔀</span><div><h3>Versioning &amp; distribution</h3><span class="cat">Git + GitHub Releases + FTP</span></div></div>
+        <p>Every app and module is versioned in Git with releases published on GitHub.
+        The agents installed at customer sites self-update by downloading the latest release —
+        and if GitHub fails, there is an <b>automatic fallback over my own FTP</b>.</p>
+        <div class="chips"><span class="chip">Git / GitHub Releases</span><span class="chip">FTP fallback</span><span class="chip">Auto-update</span><span class="chip">Per-module repos</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔐</span><div><h3>Self-hosted VPN</h3><span class="cat">WireGuard private network</span></div></div>
+        <p>My own VPN with WireGuard linking the central server to customer sites — secure remote
+        access to each site's databases and services without exposing anything to the open
+        internet, integrated with the sync server.</p>
+        <div class="chips"><span class="chip">WireGuard</span><span class="chip">Private network</span><span class="chip">Secure remote access</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🛰️</span><div><h3>Central monitoring server</h3><span class="cat">Public API + helpdesk</span></div></div>
+        <p>A central server receiving status, occurrences and telemetry from all customers:
+        documented REST API (Swagger/OpenAPI), atomic consumption of execution flags, automatic
+        ticket creation, integrated scheduling and operational metrics.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Swagger/OpenAPI</span><span class="chip">Metrics</span><span class="chip">Auto tickets</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🧩</span><div><h3>Per-customer module architecture</h3><span class="cat">Agents + Windows services</span></div></div>
+        <p>Each customer runs an agent (a Windows service with a watchdog) that installs and
+        maintains the modules — PontoBR, Dashboard, Portal, WhatsApp, Collector. Updates,
+        configuration and module health are managed remotely by the central server.</p>
+        <div class="chips"><span class="chip">Windows Service</span><span class="chip">Watchdog</span><span class="chip">PyInstaller</span><span class="chip">Systray</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🐧</span><div><h3>Linux servers in production</h3><span class="cat">VPS · self-hosting</span></div></div>
+        <p>I manage Linux VPS (Ubuntu) end to end: Docker and Docker Compose, Caddy reverse proxy
+        with automatic HTTPS (Let's Encrypt), DNS, firewall, key-based SSH, and deploy scripts
+        in shell and PowerShell — this very platform runs on that infrastructure.</p>
+        <div class="chips"><span class="chip">Ubuntu / VPS</span><span class="chip">Docker Compose</span><span class="chip">Caddy + HTTPS</span><span class="chip">SSH / DNS / firewall</span><span class="chip">Bash &amp; PowerShell</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills-en">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Stack</span>
+      <h2>Technical skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="card skill-block">
+        <h3>Languages &amp; Frameworks</h3>
+        <div class="chips">
+          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
+          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">Advanced SQL</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Databases</h3>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Triggers &amp; views</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Brazil integrations</h3>
+        <div class="chips">
+          <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">FEBRABAN / CNAB slips</span>
+          <span class="chip">Code 128 barcodes</span><span class="chip">Protheus ERP</span><span class="chip">SINTEGRA</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Automation &amp; Messaging</h3>
+        <div class="chips">
+          <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">SMTP/HTML e-mail</span>
+          <span class="chip">Windows Services / watchdog</span><span class="chip">Scheduled reports</span><span class="chip">Auto-update</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Hardware &amp; Protocols</h3>
+        <div class="chips">
+          <span class="chip">TSL 350 gauge (TCP/hex)</span><span class="chip">DVRIP/Sofia (cameras)</span>
+          <span class="chip">NFC</span><span class="chip">Serial / FTP</span><span class="chip">Godex/ZPL printers</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>DevOps &amp; Linux</h3>
+        <div class="chips">
+          <span class="chip">Linux Ubuntu / VPS</span><span class="chip">Docker / Compose</span>
+          <span class="chip">Caddy / HTTPS</span><span class="chip">SSH / DNS / firewall</span>
+          <span class="chip">GitHub Releases + FTP</span><span class="chip">WireGuard VPN</span>
+          <span class="chip">PyInstaller</span><span class="chip">Bash / PowerShell</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Artificial intelligence</h3>
+        <div class="chips">
+          <span class="chip">Ollama / local LLM</span><span class="chip">Stable Diffusion</span>
+          <span class="chip">OCR (plates, odometer, PDFs)</span><span class="chip">ERP-data agents</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos-en" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ecosystem</span>
+      <h2>Modules installed at customers</h2>
+      <p>Each module is an independent product, versioned and remotely updated by the central server.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📅</span><div><h3>PontoBR Module</h3><span class="cat">Report scheduler</span></div></div>
+        <p>Scheduler running at each customer executing programmed SQL queries (daily, weekly,
+        monthly) on PostgreSQL and sending HTML reports by e-mail — including automatic billing
+        with attached bank slips and an occurrences monitor.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SMTP</span><span class="chip">Attached slips</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Collector Module</h3><span class="cat">Android app</span></div></div>
+        <p>Field data-collection Android app integrated with the ecosystem — mobile operation
+        synchronized with the central server.</p>
+        <div class="chips"><span class="chip">Kotlin</span><span class="chip">Android</span><span class="chip">Gradle</span><span class="chip">Sync</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🏪</span><div><h3>Customer Portal Module</h3><span class="cat">Logged web area</span></div></div>
+        <p>Portal used by end customers to view fleet statements, invoices, bank slips and tolls —
+        with its own user and profile management.</p>
+        <div class="chips"><span class="chip">Express</span><span class="chip">React + Vite</span><span class="chip">PDF slips</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Internal portal</span></div></div>
+        <p>Portal monitoring the whole customer base: occurrences, per-company licensing,
+        automatic helpdesk ticket creation with per-technician routing, scheduling, WhatsApp
+        alerts and SEFAZ status PDF reports.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+    </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <h2 style="font-size:24px">And more tools</h2>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Backup</b> — scheduled backup of PostgreSQL, MySQL, SQL Server and Oracle with web panel and encrypted passwords.</li>
+      <li><b>Cam Monitor</b> — discovery and snapshots of cameras/DVRs on the LAN implementing the DVRIP/Sofia protocol.</li>
+      <li><b>Slip Lookup</b> — queries and regenerates FEBRABAN bank slips with barcodes from the ERP.</li>
+      <li><b>Accounting Integration</b> — synchronizes chart-of-accounts between companies on PostgreSQL.</li>
+      <li><b>Report Updater</b> — client/server hub with REST API, transactional sync and multi-database monitoring.</li>
+      <li><b>MS-DOS Fixer</b> — imports and fixes legacy inventory TXT files into the database.</li>
+      <li><b>Projects Catalog</b> — web server that organizes PDFs by topic with text extraction and OCR.</li>
+      <li><b>Mercadinho do Bairro</b> — supermarket simulator game in development (Unreal Engine 5).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contato-en">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Let's talk?</h2>
+      <p>Need a system, an automation or an integration? Reach me on WhatsApp or LinkedIn.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">+55 (45) 99902-1760</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" onclick="window.print()">📄 Download resume as PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Douglas Francisco Bonfim — Cascavel/PR, Brazil</span>
+    <span>Built by me</span>
+  </div>
+</footer>
+</div>
+</div><!-- /lang-en -->
+
+<!-- ===================== CONTEÚDO IT ===================== -->
+<div class="lang lang-it">
+
+<div class="doc-wrap">
+  <div class="print-cv">
+    <h1>Douglas Francisco Bonfim</h1>
+    <p class="cargo">Sviluppatore Full-Stack Python</p>
+    <p class="contato">
+      Cascavel — Paraná, Brasile · +55 (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
+      linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · digitalizaapp.tech/curriculo<br/>
+      <b>In possesso di diritto al soggiorno e al lavoro in Italia (coniuge di cittadina italiana).</b><br/>
+      Sposato, due figli · Auto propria (disponibile per spostamenti)
+    </p>
+
+    <h2>Profilo</h2>
+    <p>Sviluppatore full-stack Python con oltre 25 sistemi realizzati da solo e in produzione: piattaforme web,
+    applicazioni Android, automazioni WhatsApp, integrazioni fiscali (NF-e/NFC-e, SEFAZ) e
+    bancarie (fatturazione FEBRABAN/CNAB), servizi Windows, integrazione con hardware industriale
+    e deploy su VPS Linux con Docker.</p>
+
+    <h2>Competenze tecniche</h2>
+    <p class="skills-line"><b>Linguaggi:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
+    <p class="skills-line"><b>Database:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — trigger, view, replica</p>
+    <p class="skills-line"><b>Integrazioni:</b> NF-e/NFC-e e stato SEFAZ, fatturazione bancaria FEBRABAN/CNAB (Code 128), ERP Protheus, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
+    <p class="skills-line"><b>Infrastruttura &amp; Linux:</b> amministrazione VPS Ubuntu, Docker/Docker Compose, Caddy con HTTPS, SSH, DNS, firewall, script di deploy in Bash/PowerShell</p>
+    <p class="skills-line"><b>Hardware &amp; protocolli:</b> misuratori TSL 350 (TCP/hex), DLL CompanyTec, NFC, seriale, DVRIP (telecamere), stampanti Godex/ZPL, servizi Windows</p>
+    <p class="skills-line"><b>Versionamento &amp; rete:</b> Git su tutti i progetti, auto-update via GitHub Releases con fallback FTP, VPN propria (WireGuard)</p>
+    <p class="skills-line"><b>IA &amp; automazione:</b> Ollama/LLM locali, Stable Diffusion, OCR, report programmati, fatturazione automatica</p>
+
+    <h2>Progetti in evidenza</h2>
+    <div class="proj-cv"><b>DTC AXIS — Piattaforma BI per stazioni di servizio.</b> Dashboard, monitoraggio fiscale SEFAZ in tempo reale, sistemi di fatturazione bancaria brasiliana (FEBRABAN), fatturazione via WhatsApp e assistente IA locale. (Flask + React + PostgreSQL + Ollama)</div>
+    <div class="proj-cv"><b>Portale Clienti.</b> Estratti flotte e sistemi di fatturazione bancaria brasiliana (FEBRABAN) di 7 banche, con codice a barre Code 128 in PDF. (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync.</b> Server centrale di API + agente Windows con auto-aggiornamento installato presso ogni cliente. (FastAPI + Windows Service + GitHub Releases + fallback FTP)</div>
+    <div class="proj-cv"><b>Automazione WhatsApp.</b> Fatturazione e invio massivo con pannello web, sessione persistente e avvisi integrati. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Flotte.</b> Gestione rifornimenti integrata con misuratori di serbatoio via TCP/IP, app Android NFC e app OCR. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Accesso Remoto proprio.</b> Strumento in stile AnyDesk costruito da zero con Electron + socket.io.</div>
+    <div class="proj-cv"><b>Digitaliza — SaaS multi-tenant.</b> Piattaforma di gestione e prenotazione per reti di aziende (questo sito), FastAPI + PostgreSQL + Docker su VPS.</div>
+
+    <h2>Informazioni aggiuntive</h2>
+    <ul>
+      <li><b>In possesso di diritto al soggiorno e al lavoro in Italia</b> (coniuge di cittadina italiana) — nessun visto o sponsorizzazione necessaria.</li>
+      <li>Disponibile per progetti in presenza e da remoto; auto propria.</li>
+      <li>Esperienza in assistenza clienti, implementazione e formazione.</li>
+      <li>Oltre 25 progetti realizzati da solo — portfolio su digitalizaapp.tech/curriculo e github.com/DouglasFBonfim.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="site">
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <span class="tag">Disponibile per progetti</span>
+      <span class="tag" style="margin-left:8px; color:var(--teal); border-color:rgba(45,212,191,.4); background:rgba(45,212,191,.07)">Diritto al lavoro in Italia</span>
+      <h1>Douglas Francisco <span>Bonfim</span></h1>
+      <p class="sub">
+        <b>Sviluppatore Full-Stack Python</b> e analista di sistemi. Costruisco <b>sistemi web</b>,
+        <b>app Android</b>, <b>automazioni WhatsApp</b>, integrazioni <b>fiscali e bancarie</b>
+        e strumenti che girano davvero in produzione — dal database al deploy su VPS.
+      </p>
+      <div class="cta">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">E-mail</a>
+        <button class="btn" onclick="window.print()">📄 Stampa curriculum</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar"><img src="img/douglas.jpg" alt="Douglas Bonfim" /></div>
+      <p class="loc"><b>Cascavel — Paraná, Brasile</b>Diritto al lavoro in Italia · auto propria</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>25+</b><span>sistemi in produzione</span></div>
+      <div class="stat"><b>6+</b><span>linguaggi</span></div>
+      <div class="stat"><b>10+</b><span>integrazioni e protocolli</span></div>
+      <div class="stat"><b>100%</b><span>in produzione reale</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="sobre-it">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Chi sono</span>
+      <h2>Chi è Douglas</h2>
+    </div>
+    <div class="about-grid">
+      <div class="card">
+        <h3>Profilo</h3>
+        <p class="muted">
+          Sviluppatore autodidatta orientato al prodotto, con oltre 25 sistemi realizzati in
+          completa autonomia e attivi in produzione. Realizzo soluzioni complete end-to-end:
+          API, pannelli web, app Android, servizi Windows, automazioni di messaggistica e
+          integrazioni con hardware fiscale e bancario. Il mio forte è trasformare processi
+          manuali in sistemi che lavorano da soli — con monitoraggio, report automatici e
+          fatturazione via WhatsApp.
+        </p>
+        <p class="muted" style="margin-top:12px">
+          Sposato, padre di due figli, vivo a Cascavel/PR e ho un'auto propria per
+          spostarmi tra clienti e aziende.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Informazioni</h3>
+        <ul class="info-list">
+          <li><span class="ico">📍</span><span><b>Cascavel</b> — Paraná, Brasile</span></li>
+          <li><span class="ico">📱</span><span><a href="https://wa.me/5545999021760">+55 (45) 99902-1760</a></span></li>
+          <li><span class="ico">✉️</span><span><a href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a></span></li>
+          <li><span class="ico">💼</span><span><a href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">linkedin.com/in/douglas-b-a1275686</a></span></li>
+          <li><span class="ico">💻</span><span><a href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">github.com/DouglasFBonfim</a></span></li>
+          <li><span class="ico">🚗</span><span>Auto propria — <b>disponibile per spostamenti</b></span></li>
+          <li><span class="ico">🇮🇹</span><span><b>Diritto al soggiorno e al lavoro in Italia</b> (coniuge di cittadina italiana)</span></li>
+          <li><span class="ico">👨‍👩‍👧‍👦</span><span>Sposato, due figli</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemas-it" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Portfolio</span>
+      <h2>I sistemi che ho costruito</h2>
+      <p>Prodotti reali, in produzione: piattaforme web, app Android, agenti di automazione,
+      integrazioni fiscali/bancarie e strumenti di infrastruttura.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📊</span><div><h3>DTC AXIS — Piattaforma BI</h3><span class="cat">Sistema web · prodotto</span></div></div>
+        <p>Piattaforma completa di gestione per stazioni di servizio: dashboard di vendite,
+        finanza e inventario, monitoraggio fiscale SEFAZ (NF-e/NFC-e in tempo reale), sistemi di
+        fatturazione bancaria brasiliana (FEBRABAN), fatturazione automatica via WhatsApp e
+        assistente IA con LLM locale.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React 19 + TS</span><span class="chip">PostgreSQL</span><span class="chip">whatsapp-web.js</span><span class="chip">Ollama / IA</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🌐</span><div><h3>Portale Clienti</h3><span class="cat">Sistema web full-stack · prodotto</span></div></div>
+        <p>Area riservata per la gestione delle flotte: estratti consumo, fatture e sistemi di
+        fatturazione bancaria brasiliana — FEBRABAN con codice a barre Code 128 (Itaú, Bradesco,
+        BB, Santander, Caixa, Sicredi, Sicoob) renderizzati in PDF, pedaggi, mappe e gestione
+        utenti con sessioni.</p>
+        <div class="chips"><span class="chip">Node/Express</span><span class="chip">React 19 + Vite</span><span class="chip">PostgreSQL</span><span class="chip">Fatturazione FEBRABAN</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecosistema distribuito</h3><span class="cat">Server centrale + agente Windows</span></div></div>
+        <p>Architettura distribuita: server centrale con API REST pubblica (FastAPI, Swagger,
+        metriche, VPN WireGuard) e agente installato presso ogni cliente con auto-aggiornamento
+        via GitHub Releases, watchdog come servizio Windows e interfaccia locale di configurazione.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">💬</span><div><h3>Automazione WhatsApp</h3><span class="cat">Messaggistica · produzione</span></div></div>
+        <p>Modulo di fatturazione e invio massivo via WhatsApp con pannello web: sessione via QR
+        Code, code di invio, promemoria, pianificazione chiamate e avvisi automatici integrati
+        con i sistemi di monitoraggio.</p>
+        <div class="chips"><span class="chip">whatsapp-web.js</span><span class="chip">Node.js</span><span class="chip">FastAPI</span><span class="chip">QR / sessione persistente</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">⛽</span><div><h3>DTC Flotte — Gestione rifornimenti</h3><span class="cat">Automazione industriale + app Android</span></div></div>
+        <p>Backend che comunica con misuratori di serbatoio TSL 350 via TCP/IP e comandi
+        esadecimali, controlla le pompe tramite DLL e alimenta un'app Android con lettura di
+        tag NFC e un'app OCR che legge contachilometri e targa dalla fotocamera.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Android Java/Kotlin</span><span class="chip">NFC</span><span class="chip">OCR</span><span class="chip">TCP/IP + hex</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>Accesso Remoto proprio</h3><span class="cat">Strumento · stile AnyDesk</span></div></div>
+        <p>Strumento di accesso remoto costruito da zero: agente Electron con cattura dello
+        schermo e controllo di mouse/tastiera, server di segnalazione con viewer web e
+        connessione automatica — distribuito come eseguibile portatile.</p>
+        <div class="chips"><span class="chip">Electron</span><span class="chip">socket.io</span><span class="chip">nut-js</span><span class="chip">Express</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📱</span><div><h3>Digitaliza — ERP + App Android</h3><span class="cat">Sistema web + app offline-first</span></div></div>
+        <p>ERP commerciale con PDV, vendite, acquisti, magazzino, conti da pagare/ricevere e
+        licenze — con app Android offline-first (Room, sync pull/push) e questa stessa
+        piattaforma SaaS multi-tenant che stai visitando.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">Android + Room</span><span class="chip">Docker + Caddy</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🤖</span><div><h3>DigitalizaIA — Assistente IA locale</h3><span class="cat">Intelligenza artificiale</span></div></div>
+        <p>Assistente IA che gira 100% in locale: conversazione, scrittura di codice in workspace,
+        ricerca web e generazione di immagini con Stable Diffusion su GPU — senza alcuna
+        dipendenza dal cloud.</p>
+        <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">GPU locale</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="infra-it">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Operazioni</span>
+      <h2>Infrastruttura propria, da zero</h2>
+      <p>Non è solo codice applicativo: ho costruito l'intera infrastruttura che mantiene i
+      prodotti in esecuzione e auto-aggiornati presso decine di clienti.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔀</span><div><h3>Versionamento e distribuzione</h3><span class="cat">Git + GitHub Releases + FTP</span></div></div>
+        <p>Tutte le app e i moduli sono versionati in Git con release pubblicate su GitHub.
+        Gli agenti installati presso i clienti si auto-aggiornano scaricando l'ultima release —
+        e se GitHub fallisce, c'è un <b>fallback automatico via FTP</b> proprio.</p>
+        <div class="chips"><span class="chip">Git / GitHub Releases</span><span class="chip">Fallback FTP</span><span class="chip">Auto-update</span><span class="chip">Repo per modulo</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔐</span><div><h3>VPN propria</h3><span class="cat">Rete privata WireGuard</span></div></div>
+        <p>Rete VPN propria con WireGuard che collega il server centrale ai clienti — accesso
+        remoto sicuro a database e servizi di ogni sede senza esporre nulla su internet aperta,
+        integrata al server di sincronizzazione.</p>
+        <div class="chips"><span class="chip">WireGuard</span><span class="chip">Rete privata</span><span class="chip">Accesso remoto sicuro</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🛰️</span><div><h3>Server centrale di monitoraggio</h3><span class="cat">API pubblica + helpdesk</span></div></div>
+        <p>Server centrale che riceve stato, occorrenze e telemetria da tutti i clienti: API REST
+        documentata (Swagger/OpenAPI), consumo atomico dei flag di esecuzione, apertura
+        automatica di ticket, agenda integrata e metriche operative.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Swagger/OpenAPI</span><span class="chip">Metriche</span><span class="chip">Ticket automatici</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🧩</span><div><h3>Architettura a moduli presso il cliente</h3><span class="cat">Agenti + servizi Windows</span></div></div>
+        <p>Ogni cliente esegue un agente (servizio Windows con watchdog) che installa e mantiene
+        i moduli — PontoBR, Dashboard, Portale, WhatsApp, Coletor. Aggiornamenti, configurazione
+        e stato di ogni modulo sono gestiti da remoto dal server centrale.</p>
+        <div class="chips"><span class="chip">Windows Service</span><span class="chip">Watchdog</span><span class="chip">PyInstaller</span><span class="chip">Systray</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🐧</span><div><h3>Server Linux in produzione</h3><span class="cat">VPS · self-hosting</span></div></div>
+        <p>Amministro VPS Linux (Ubuntu) end-to-end: Docker e Docker Compose, reverse proxy Caddy
+        con HTTPS automatico (Let's Encrypt), DNS, firewall, SSH con chiave e script di deploy
+        in shell e PowerShell — questa stessa piattaforma gira su quell'infrastruttura.</p>
+        <div class="chips"><span class="chip">Ubuntu / VPS</span><span class="chip">Docker Compose</span><span class="chip">Caddy + HTTPS</span><span class="chip">SSH / DNS / firewall</span><span class="chip">Bash &amp; PowerShell</span></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="skills-it">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Stack</span>
+      <h2>Competenze tecniche</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="card skill-block">
+        <h3>Linguaggi e framework</h3>
+        <div class="chips">
+          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
+          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">SQL avanzato</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Database</h3>
+        <div class="chips">
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Trigger e view</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Integrazioni Brasile</h3>
+        <div class="chips">
+          <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">Fatturazione FEBRABAN / CNAB</span>
+          <span class="chip">Codice a barre Code 128</span><span class="chip">ERP Protheus</span><span class="chip">SINTEGRA</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Automazione e messaggistica</h3>
+        <div class="chips">
+          <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">E-mail SMTP/HTML</span>
+          <span class="chip">Servizi Windows / watchdog</span><span class="chip">Report programmati</span><span class="chip">Auto-update</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Hardware e protocolli</h3>
+        <div class="chips">
+          <span class="chip">Misuratore TSL 350 (TCP/hex)</span><span class="chip">DVRIP/Sofia (telecamere)</span>
+          <span class="chip">NFC</span><span class="chip">Seriale / FTP</span><span class="chip">Stampanti Godex/ZPL</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>DevOps e Linux</h3>
+        <div class="chips">
+          <span class="chip">Linux Ubuntu / VPS</span><span class="chip">Docker / Compose</span>
+          <span class="chip">Caddy / HTTPS</span><span class="chip">SSH / DNS / firewall</span>
+          <span class="chip">GitHub Releases + FTP</span><span class="chip">VPN WireGuard</span>
+          <span class="chip">PyInstaller</span><span class="chip">Bash / PowerShell</span>
+        </div>
+      </div>
+      <div class="card skill-block">
+        <h3>Intelligenza artificiale</h3>
+        <div class="chips">
+          <span class="chip">Ollama / LLM locale</span><span class="chip">Stable Diffusion</span>
+          <span class="chip">OCR (targhe, contachilometri, PDF)</span><span class="chip">Agenti su dati ERP</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos-it" style="background:var(--bg-2)">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Ecosistema</span>
+      <h2>Moduli installati presso i clienti</h2>
+      <p>Ogni modulo è un prodotto indipendente, versionato e aggiornato da remoto dal server centrale.</p>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="top"><span class="pico">📅</span><div><h3>Modulo PontoBR</h3><span class="cat">Pianificatore di report</span></div></div>
+        <p>Pianificatore che gira presso il cliente eseguendo query SQL programmate (giornaliere,
+        settimanali, mensili) su PostgreSQL e inviando report HTML via e-mail — inclusa la
+        fatturazione automatica con documento di pagamento allegato e monitor di occorrenze.</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">PostgreSQL</span><span class="chip">SMTP</span><span class="chip">Fatture allegate</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Modulo Coletor</h3><span class="cat">App Android</span></div></div>
+        <p>App Android per la raccolta dati sul campo integrata con l'ecosistema — operazione
+        mobile sincronizzata con il server centrale.</p>
+        <div class="chips"><span class="chip">Kotlin</span><span class="chip">Android</span><span class="chip">Gradle</span><span class="chip">Sync</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🏪</span><div><h3>Modulo Portale Clienti</h3><span class="cat">Area riservata web</span></div></div>
+        <p>Portale che il cliente finale usa per vedere estratti flotta, fatture, documenti di
+        pagamento e pedaggi — con gestione propria di utenti e profili.</p>
+        <div class="chips"><span class="chip">Express</span><span class="chip">React + Vite</span><span class="chip">Fatture PDF</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Portale interno</span></div></div>
+        <p>Portale di monitoraggio di tutta la base clienti: occorrenze, licenze per azienda,
+        apertura automatica di ticket helpdesk con instradamento per tecnico, agenda, avvisi
+        WhatsApp e report PDF sullo stato SEFAZ.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+    </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <h2 style="font-size:24px">E altri strumenti</h2>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Backup</b> — backup pianificato di PostgreSQL, MySQL, SQL Server e Oracle con pannello web e password cifrate.</li>
+      <li><b>Cam Monitor</b> — scoperta e snapshot di telecamere/DVR in rete implementando il protocollo DVRIP/Sofia.</li>
+      <li><b>Consulta Bollettini</b> — interroga e rigenera documenti di fatturazione FEBRABAN con codice a barre dall'ERP.</li>
+      <li><b>Integrazione Contabile</b> — sincronizza i piani dei conti tra aziende su PostgreSQL.</li>
+      <li><b>Atualizador de Relatórios</b> — hub client/server con API REST, sincronizzazione transazionale e monitoraggio multi-database.</li>
+      <li><b>Ajuste MS-DOS</b> — importa e corregge file TXT legacy di magazzino nel database.</li>
+      <li><b>Catalogo Progetti</b> — server web che organizza PDF per tema con estrazione testo e OCR.</li>
+      <li><b>Mercadinho do Bairro</b> — gioco simulatore di supermercato in sviluppo (Unreal Engine 5).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contato-it">
+  <div class="wrap">
+    <div class="contact-card">
+      <h2>Parliamone?</h2>
+      <p>Hai bisogno di un sistema, un'automazione o un'integrazione? Scrivimi su WhatsApp o LinkedIn.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn wa" href="https://wa.me/5545999021760" target="_blank" rel="noopener">+55 (45) 99902-1760</a>
+        <a class="btn ghost" href="#" onclick="copyEmail(event)">douglasfbonfim7500@gmail.com</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/douglas-b-a1275686/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn ghost" href="https://github.com/DouglasFBonfim" target="_blank" rel="noopener">GitHub</a>
+        <button class="btn" onclick="window.print()">📄 Scarica il curriculum in PDF</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Douglas Francisco Bonfim — Cascavel/PR, Brasile</span>
+    <span>Sviluppato da me</span>
+  </div>
+</footer>
+</div>
+</div><!-- /lang-it -->
+
+<div id="copy-toast"></div>
+
+<script>
+var EMAIL = "douglasfbonfim7500@gmail.com";
+function _toastCopy() {
+  var t = document.getElementById("copy-toast");
+  t.textContent = document.body.classList.contains("lang-en")
+    ? "E-mail copied!"
+    : document.body.classList.contains("lang-it")
+      ? "E-mail copiata!" : "E-mail copiado!";
+  t.classList.add("show");
+  setTimeout(function () { t.classList.remove("show"); }, 1800);
+}
+function copyEmail(ev) {
+  ev.preventDefault();
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(EMAIL).then(_toastCopy).catch(function () {
+      var i = document.createElement("textarea");
+      i.value = EMAIL; document.body.appendChild(i); i.select();
+      document.execCommand("copy"); i.remove(); _toastCopy();
+    });
+  } else {
+    var i = document.createElement("textarea");
+    i.value = EMAIL; document.body.appendChild(i); i.select();
+    document.execCommand("copy"); i.remove(); _toastCopy();
+  }
+}
+var NAV_TXT = {
+  sobre:    { pt: "Sobre",          en: "About",          it: "Chi sono" },
+  sistemas: { pt: "Sistemas",       en: "Systems",        it: "Sistemi" },
+  infra:    { pt: "Infraestrutura", en: "Infrastructure", it: "Infrastruttura" },
+  skills:   { pt: "Skills",         en: "Skills",         it: "Competenze" },
+  contato:  { pt: "Contato",        en: "Contact",        it: "Contatto" },
+};
+var PRINT_TXT = { pt: "📄 Imprimir PDF", en: "📄 Print PDF", it: "📄 Stampa PDF" };
+var TITLES = {
+  pt: "Douglas Bonfim — Desenvolvedor Full-Stack",
+  en: "Douglas Bonfim — Full-Stack Developer",
+  it: "Douglas Bonfim — Sviluppatore Full-Stack Python",
+};
+function setLang(l) {
+  document.body.classList.remove("lang-pt", "lang-en", "lang-it");
+  document.body.classList.add("lang-" + l);
+  document.documentElement.lang = l === "en" ? "en" : (l === "it" ? "it" : "pt-BR");
+  document.getElementById("flag-pt").classList.toggle("ativo", l === "pt");
+  document.getElementById("flag-en").classList.toggle("ativo", l === "en");
+  document.getElementById("flag-it").classList.toggle("ativo", l === "it");
+  document.querySelectorAll(".nav-i18n").forEach(function (a) {
+    var s = a.dataset.sec;
+    a.textContent = NAV_TXT[s][l];
+    a.href = l === "pt" ? "#" + s : "#" + s + "-" + l;
+  });
+  document.querySelectorAll("nav .links .btn").forEach(function (b) {
+    b.textContent = PRINT_TXT[l];
+  });
+  document.title = TITLES[l];
+  try { localStorage.setItem("cv_lang", l); } catch (e) {}
+}
+function _scrollHash() {
+  var h = location.hash.replace("#", "");
+  if (!h) return;
+  var base = h.replace(/-(pt|en|it)$/, "");
+  var m = document.body.className.match(/lang-(pt|en|it)/);
+  var cur = m ? m[1] : "pt";
+  var el = document.getElementById(base + (cur === "pt" ? "" : "-" + cur));
+  if (el) el.scrollIntoView({ block: "start" });
+}
+window.addEventListener("hashchange", _scrollHash);
+var _l = "it";
+try { _l = localStorage.getItem("cv_lang") || "it"; } catch (e) {}
+setLang(_l);
+_scrollHash();
+</script>
+
+</body>
+</html>
