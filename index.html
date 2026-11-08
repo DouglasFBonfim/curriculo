@@ -284,7 +284,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
 <div class="doc-wrap">
   <div class="print-cv">
     <h1>Douglas Francisco Bonfim</h1>
-    <p class="cargo">Desenvolvedor Full-Stack &amp; Analista de Sistemas</p>
+    <p class="cargo">Desenvolvedor Full-Stack · Delphi · Python · Android · APIs REST</p>
     <p class="contato">
       Cascavel — Paraná, Brasil · (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
       linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · douglasfbonfim.github.io/curriculo<br/>
@@ -293,34 +293,49 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     </p>
 
     <h2>Resumo</h2>
-    <p>Desenvolvedor full-stack com mais de 25 sistemas entregues e em produção: plataformas web,
-    aplicativos Android, automação de WhatsApp, integrações fiscais (NF-e/NFC-e, SEFAZ) e bancárias
-    (boletos FEBRABAN/CNAB), serviços Windows, integração com hardware industrial e deploy em VPS
-    Linux com Docker.</p>
+    <p>Desenvolvedor de software na Datacom Automação para Postos de Combustíveis desde jun/2022.
+    Entrego sistemas em produção (Windows, Android e Web): Delphi, Python (FastAPI/Flask), PostgreSQL,
+    APIs REST, apps Android (NFC), integrações fiscais/bancárias/ERP, automação WhatsApp,
+    integração com hardware (DLL/SDK e concentradores) e deploy em VPS Linux com Docker.</p>
+
+    <h2>Experiência profissional</h2>
+    <p class="proj-cv"><b>Desenvolvedor de Software</b> — Datacom Automação para Postos de Combustíveis<br/>
+    <b>jun/2022 – atual</b> · Cascavel/PR · CLT</p>
+    <ul>
+      <li>Desenvolvimento e manutenção de sistemas de automação para postos e frota (Delphi, Python, Android, Web).</li>
+      <li>APIs REST, serviços Windows, sync e autoatualização de agentes em clientes.</li>
+      <li>Integração hardware–software via DLL/SDK e protocolos com concentradores e medidores de tanque (TCP/IP).</li>
+      <li>Apps Android nativos (NFC/abastecimento) e painéis web (Flask/React) consumindo o backend.</li>
+      <li>Integrações fiscais (NF-e/NFC-e, SEFAZ), bancárias (FEBRABAN/CNAB) e ERP (Protheus).</li>
+      <li>Suporte, implantação, treinamento e entrega ponta a ponta em produção.</li>
+    </ul>
+    <p style="font-size:10pt;margin:6px 0 4px"><b>Sistemas entregues na Datacom (seleção):</b></p>
+    <div class="proj-cv"><b>DTC AXIS</b> — BI para postos: dashboards, SEFAZ em tempo real, boletos, cobrança WhatsApp e IA local. (Flask + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>Portal do Cliente</b> — extrato de frotas, faturas e boletos de 7 bancos (Code 128). (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync</b> — ecossistema: APIs centrais, agente Windows (watchdog/módulos) e autoatualização. (FastAPI + Windows Service)</div>
+    <div class="proj-cv"><b>DTC Sync Client</b> — desktop na bandeja: autorização do PDV, VPN, importação e sync de módulos. (Python + CustomTkinter)</div>
+    <div class="proj-cv"><b>DTC Sync Android</b> — app Kotlin/Compose: liberar/recusar PDV, biometria, VPN e serviço em foreground. (Android)</div>
+    <div class="proj-cv"><b>Automação WhatsApp</b> — cobrança e disparo em massa com painel web. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Frota</b> — abastecimento + medidores TCP/IP + app Android NFC e OCR. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Acesso Remoto</b> — ferramenta estilo AnyDesk (Electron + socket.io).</div>
+
+    <h2>Formação acadêmica</h2>
+    <p class="proj-cv"><b>Análise e Desenvolvimento de Sistemas</b> — FASUL<br/>
+    <b>jun/2024 – set/2026</b> · Tecnólogo · Concluído</p>
 
     <h2>Competências técnicas</h2>
     <p class="skills-line"><b>Linguagens:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
     <p class="skills-line"><b>Bancos:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — triggers, views, replicação</p>
     <p class="skills-line"><b>Integrações:</b> NF-e/NFC-e e status SEFAZ, boletos FEBRABAN/CNAB (Code 128), ERP Protheus, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
     <p class="skills-line"><b>Infra &amp; Linux:</b> administração de VPS Ubuntu, Docker/Docker Compose, Caddy com HTTPS, SSH, DNS, firewall, scripts de deploy em Bash/PowerShell</p>
-    <p class="skills-line"><b>Hardware &amp; protocolos:</b> medidores TSL 350 (TCP/hex), DLL CompanyTec, NFC, serial, DVRIP (câmeras), impressoras Godex/ZPL, Windows Services</p>
+    <p class="skills-line"><b>Hardware &amp; protocolos:</b> medidores TSL 350 (TCP/hex), DLL CompanyTec, concentradores, NFC, serial, DVRIP (câmeras), impressoras Godex/ZPL, Windows Services</p>
     <p class="skills-line"><b>Versionamento &amp; rede:</b> Git em todos os projetos, auto-update via GitHub Releases com fallback FTP, VPN própria (WireGuard)</p>
     <p class="skills-line"><b>IA &amp; automação:</b> Ollama/LLM local, Stable Diffusion, OCR, relatórios agendados, cobrança automática</p>
 
-    <h2>Projetos em destaque</h2>
-    <div class="proj-cv"><b>DTC AXIS — Plataforma de BI para postos de combustível.</b> Dashboards, monitoramento fiscal SEFAZ em tempo real, boletos, cobrança por WhatsApp e assistente de IA local. (Flask + React + PostgreSQL + Ollama)</div>
-    <div class="proj-cv"><b>Portal do Cliente.</b> Extrato de frotas, faturas e boletos bancários de 7 bancos com código de barras Code 128 em PDF. (Node/Express + React + PostgreSQL)</div>
-    <div class="proj-cv"><b>DTC Sync.</b> Servidor central de APIs + agente Windows com auto-atualização instalado em cada cliente. (FastAPI + Windows Service + GitHub Releases + fallback FTP)</div>
-    <div class="proj-cv"><b>Automação WhatsApp.</b> Cobrança e disparo em massa com painel web, sessão persistente e alertas integrados. (whatsapp-web.js + FastAPI)</div>
-    <div class="proj-cv"><b>DTC Frota.</b> Gestão de abastecimento integrada a medidores de tanque por TCP/IP, com app Android NFC e app de OCR. (Delphi + Android)</div>
-    <div class="proj-cv"><b>Acesso Remoto próprio.</b> Ferramenta estilo AnyDesk construída do zero com Electron + socket.io.</div>
-    <div class="proj-cv"><b>Digitaliza — SaaS multi-tenant.</b> Plataforma de agendamento e gestão para redes de empresas (este site), com API FastAPI, PostgreSQL e Docker em VPS.</div>
-
     <h2>Informações adicionais</h2>
     <ul>
-      <li>Disponibilidade para projetos presenciais e remotos; veículo próprio.</li>
-      <li>Experiência com suporte a cliente, implantação e treinamento de sistemas.</li>
-      <li>Mais de 25 projetos desenvolvidos — portfólio em douglasfbonfim.github.io/curriculo, digitalizaapp.tech/curriculo e github.com/DouglasFBonfim.</li>
+      <li>Disponibilidade para remoto, híbrido e presencial; veículo próprio.</li>
+      <li>Portfólio: douglasfbonfim.github.io/curriculo · github.com/DouglasFBonfim</li>
     </ul>
   </div>
 </div>
@@ -424,11 +439,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       </article>
 
       <article class="proj">
-        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecossistema distribuído</h3><span class="cat">Servidor central + agente Windows</span></div></div>
-        <p>Arquitetura distribuída: servidor central com API REST pública (FastAPI, Swagger,
-        métricas, VPN WireGuard) + agente instalado em cada cliente com auto-atualização via
-        GitHub Releases, watchdog como serviço Windows e interface local de configuração.</p>
-        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecossistema distribuído</h3><span class="cat">Servidor + agente + Client desktop + Android</span></div></div>
+        <p>Arquitetura completa: servidor central (APIs REST, execuções NF-e/NFC-e, VPN) + agente
+        Windows no posto (ConfigServer.ini, watchdog, sync de módulos) + Client desktop na bandeja
+        para autorizar o PDV e puxar Dashboard/PontoBR/Portal + app Android (Kotlin/Compose) com
+        biometria, WireGuard e liberação remota do caixa.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Python / CustomTkinter</span><span class="chip">Kotlin Compose</span><span class="chip">Windows Service</span><span class="chip">WireGuard</span><span class="chip">Biometria</span></div>
       </article>
 
       <article class="proj">
@@ -679,7 +695,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
 <div class="doc-wrap">
   <div class="print-cv">
     <h1>Douglas Francisco Bonfim</h1>
-    <p class="cargo">Full-Stack Developer &amp; Systems Analyst</p>
+    <p class="cargo">Full-Stack Developer · Delphi · Python · Android · REST APIs</p>
     <p class="contato">
       Cascavel — Paraná, Brazil · +55 (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
       linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · douglasfbonfim.github.io/curriculo<br/>
@@ -688,34 +704,49 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     </p>
 
     <h2>Summary</h2>
-    <p>Full-stack developer with 25+ systems delivered and running in production: web platforms,
-    Android apps, WhatsApp automation, fiscal integrations (NF-e/NFC-e, SEFAZ) and banking
-    (FEBRABAN/CNAB payment slips), Windows services, industrial hardware integration and
-    deployment on Linux VPS with Docker.</p>
+    <p>Software developer at Datacom Automação para Postos de Combustíveis since Jun/2022.
+    I ship production systems (Windows, Android, Web): Delphi, Python (FastAPI/Flask), PostgreSQL,
+    REST APIs, Android apps (NFC), fiscal/banking/ERP integrations, WhatsApp automation,
+    hardware integration (DLL/SDK and concentrators), and Linux VPS deploy with Docker.</p>
+
+    <h2>Professional experience</h2>
+    <p class="proj-cv"><b>Software Developer</b> — Datacom Automação para Postos de Combustíveis<br/>
+    <b>Jun/2022 – Present</b> · Cascavel/PR · Full-time</p>
+    <ul>
+      <li>Develop and maintain fuel-station and fleet automation systems (Delphi, Python, Android, Web).</li>
+      <li>REST APIs, Windows services, sync and self-updating agents at customer sites.</li>
+      <li>Hardware–software integration via DLL/SDK and protocols with concentrators and tank gauges (TCP/IP).</li>
+      <li>Native Android apps (NFC/fueling) and web dashboards (Flask/React) consuming backend APIs.</li>
+      <li>Fiscal (NF-e/NFC-e, SEFAZ), banking (FEBRABAN/CNAB) and ERP (Protheus) integrations.</li>
+      <li>Support, deployment, training and end-to-end delivery in production.</li>
+    </ul>
+    <p style="font-size:10pt;margin:6px 0 4px"><b>Systems delivered at Datacom (selection):</b></p>
+    <div class="proj-cv"><b>DTC AXIS</b> — gas-station BI: dashboards, real-time SEFAZ, bank slips, WhatsApp billing, local AI. (Flask + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>Customer Portal</b> — fleet statements and slips for 7 banks (Code 128). (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync</b> — ecosystem: central APIs, Windows agent (watchdog/modules) and auto-update. (FastAPI + Windows Service)</div>
+    <div class="proj-cv"><b>DTC Sync Client</b> — tray desktop: POS authorization, VPN, import and module sync. (Python + CustomTkinter)</div>
+    <div class="proj-cv"><b>DTC Sync Android</b> — Kotlin/Compose app: approve/reject POS, biometrics, VPN and foreground service. (Android)</div>
+    <div class="proj-cv"><b>WhatsApp Automation</b> — bulk billing with web panel. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Fleet</b> — fueling + TCP/IP gauges + Android NFC/OCR. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Remote Access</b> — AnyDesk-style tool (Electron + socket.io).</div>
+
+    <h2>Education</h2>
+    <p class="proj-cv"><b>Systems Analysis and Development</b> — FASUL<br/>
+    <b>Jun/2024 – Sep/2026</b> · Associate degree · Completed</p>
 
     <h2>Technical skills</h2>
     <p class="skills-line"><b>Languages:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
     <p class="skills-line"><b>Databases:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — triggers, views, replication</p>
     <p class="skills-line"><b>Integrations:</b> NF-e/NFC-e and SEFAZ status, FEBRABAN/CNAB bank slips (Code 128), Protheus ERP, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
     <p class="skills-line"><b>Infra &amp; Linux:</b> Ubuntu VPS administration, Docker/Docker Compose, Caddy with HTTPS, SSH, DNS, firewall, Bash/PowerShell deploy scripts</p>
-    <p class="skills-line"><b>Hardware &amp; protocols:</b> TSL 350 tank gauges (TCP/hex), CompanyTec DLL, NFC, serial, DVRIP (cameras), Godex/ZPL printers, Windows Services</p>
+    <p class="skills-line"><b>Hardware &amp; protocols:</b> TSL 350 tank gauges (TCP/hex), CompanyTec DLL, concentrators, NFC, serial, DVRIP (cameras), Godex/ZPL printers, Windows Services</p>
     <p class="skills-line"><b>Versioning &amp; network:</b> Git on every project, auto-update via GitHub Releases with FTP fallback, self-hosted VPN (WireGuard)</p>
     <p class="skills-line"><b>AI &amp; automation:</b> Ollama/local LLMs, Stable Diffusion, OCR, scheduled reports, automated billing</p>
 
-    <h2>Featured projects</h2>
-    <div class="proj-cv"><b>DTC AXIS — BI platform for gas stations.</b> Dashboards, real-time SEFAZ fiscal monitoring, bank slips, WhatsApp billing and a local-AI assistant. (Flask + React + PostgreSQL + Ollama)</div>
-    <div class="proj-cv"><b>Customer Portal.</b> Fleet statements, invoices and bank slips for 7 banks with Code 128 barcodes rendered to PDF. (Node/Express + React + PostgreSQL)</div>
-    <div class="proj-cv"><b>DTC Sync.</b> Central API server + self-updating Windows agent installed at each customer site. (FastAPI + Windows Service + GitHub Releases + FTP fallback)</div>
-    <div class="proj-cv"><b>WhatsApp Automation.</b> Bulk billing and messaging with a web panel, persistent session and integrated alerts. (whatsapp-web.js + FastAPI)</div>
-    <div class="proj-cv"><b>DTC Fleet.</b> Fuel management integrated with tank gauges over TCP/IP, plus an Android NFC app and an OCR camera app. (Delphi + Android)</div>
-    <div class="proj-cv"><b>Custom Remote Access.</b> An AnyDesk-style remote desktop tool built from scratch with Electron + socket.io.</div>
-    <div class="proj-cv"><b>Digitaliza — multi-tenant SaaS.</b> Scheduling and management platform for company networks (this very site), FastAPI + PostgreSQL + Docker on a VPS.</div>
-
     <h2>Additional information</h2>
     <ul>
-      <li>Available for on-site and remote projects; own car.</li>
-      <li>Experienced in customer support, deployment and system training.</li>
-      <li>25+ projects developed — portfolio at douglasfbonfim.github.io/curriculo, digitalizaapp.tech/curriculo and github.com/DouglasFBonfim.</li>
+      <li>Open to remote, hybrid and on-site roles; own car.</li>
+      <li>Portfolio: douglasfbonfim.github.io/curriculo · github.com/DouglasFBonfim</li>
     </ul>
   </div>
 </div>
@@ -818,11 +849,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       </article>
 
       <article class="proj">
-        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Distributed ecosystem</h3><span class="cat">Central server + Windows agent</span></div></div>
-        <p>Distributed architecture: central server with a public REST API (FastAPI, Swagger,
-        metrics, WireGuard VPN) plus an agent installed at each customer with auto-update via
-        GitHub Releases, watchdog as a Windows service and a local config UI.</p>
-        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Distributed ecosystem</h3><span class="cat">Server + agent + desktop Client + Android</span></div></div>
+        <p>Full stack: central server (REST APIs, NF-e/NFC-e execution flags, VPN) + on-site Windows
+        agent (ConfigServer.ini, watchdog, module sync) + tray Client to authorize the POS and pull
+        Dashboard/PontoBR/Portal packages + Android app (Kotlin/Compose) with biometrics, WireGuard
+        and remote POS release.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Python / CustomTkinter</span><span class="chip">Kotlin Compose</span><span class="chip">Windows Service</span><span class="chip">WireGuard</span><span class="chip">Biometrics</span></div>
       </article>
 
       <article class="proj">
@@ -1073,7 +1105,7 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
 <div class="doc-wrap">
   <div class="print-cv">
     <h1>Douglas Francisco Bonfim</h1>
-    <p class="cargo">Sviluppatore Full-Stack Python</p>
+    <p class="cargo">Sviluppatore Full-Stack · Delphi · Python · Android · API REST</p>
     <p class="contato">
       Cascavel — Paraná, Brasile · +55 (45) 99902-1760 · douglasfbonfim7500@gmail.com<br/>
       linkedin.com/in/douglas-b-a1275686 · github.com/DouglasFBonfim · douglasfbonfim.github.io/curriculo<br/>
@@ -1083,35 +1115,50 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     </p>
 
     <h2>Profilo</h2>
-    <p>Sviluppatore full-stack Python con oltre 25 sistemi realizzati da solo e in produzione: piattaforme web,
-    applicazioni Android, automazioni WhatsApp, integrazioni fiscali (NF-e/NFC-e, SEFAZ) e
-    bancarie (fatturazione FEBRABAN/CNAB), servizi Windows, integrazione con hardware industriale
-    e deploy su VPS Linux con Docker.</p>
+    <p>Sviluppatore software presso Datacom Automação para Postos de Combustíveis dal giu/2022.
+    Consegno sistemi in produzione (Windows, Android, Web): Delphi, Python (FastAPI/Flask), PostgreSQL,
+    API REST, app Android (NFC), integrazioni fiscali/bancarie/ERP, automazione WhatsApp,
+    integrazione hardware (DLL/SDK e concentratori) e deploy su VPS Linux con Docker.</p>
+
+    <h2>Esperienza professionale</h2>
+    <p class="proj-cv"><b>Sviluppatore Software</b> — Datacom Automação para Postos de Combustíveis<br/>
+    <b>giu/2022 – attuale</b> · Cascavel/PR · Tempo pieno</p>
+    <ul>
+      <li>Sviluppo e manutenzione di sistemi di automazione per stazioni di servizio e flotte (Delphi, Python, Android, Web).</li>
+      <li>API REST, servizi Windows, sync e agenti auto-aggiornanti presso i clienti.</li>
+      <li>Integrazione hardware–software via DLL/SDK e protocolli con concentratori e misuratori di serbatoio (TCP/IP).</li>
+      <li>App Android native (NFC/rifornimento) e dashboard web (Flask/React) che consumano il backend.</li>
+      <li>Integrazioni fiscali (NF-e/NFC-e, SEFAZ), bancarie (FEBRABAN/CNAB) e ERP (Protheus).</li>
+      <li>Supporto, implementazione, formazione e consegna end-to-end in produzione.</li>
+    </ul>
+    <p style="font-size:10pt;margin:6px 0 4px"><b>Sistemi consegnati in Datacom (selezione):</b></p>
+    <div class="proj-cv"><b>DTC AXIS</b> — BI per stazioni: dashboard, SEFAZ in tempo reale, fatturazione WhatsApp, IA locale. (Flask + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>Portale Clienti</b> — estratti flotte e fatture di 7 banche (Code 128). (Node/Express + React + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Sync</b> — ecosistema: API centrali, agente Windows (watchdog/moduli) e auto-aggiornamento. (FastAPI + Windows Service)</div>
+    <div class="proj-cv"><b>DTC Sync Client</b> — desktop in tray: autorizzazione PDV, VPN, import e sync moduli. (Python + CustomTkinter)</div>
+    <div class="proj-cv"><b>DTC Sync Android</b> — app Kotlin/Compose: liberare/rifiutare PDV, biometria, VPN e servizio in foreground. (Android)</div>
+    <div class="proj-cv"><b>Automazione WhatsApp</b> — fatturazione massiva con pannello web. (whatsapp-web.js + FastAPI)</div>
+    <div class="proj-cv"><b>DTC Flotte</b> — rifornimenti + misuratori TCP/IP + Android NFC/OCR. (Delphi + Android)</div>
+    <div class="proj-cv"><b>Accesso Remoto</b> — strumento stile AnyDesk (Electron + socket.io).</div>
+
+    <h2>Formazione</h2>
+    <p class="proj-cv"><b>Analisi e Sviluppo di Sistemi</b> — FASUL<br/>
+    <b>giu/2024 – set/2026</b> · Tecnologo · Completato</p>
 
     <h2>Competenze tecniche</h2>
     <p class="skills-line"><b>Linguaggi:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
     <p class="skills-line"><b>Database:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — trigger, view, replica</p>
     <p class="skills-line"><b>Integrazioni:</b> NF-e/NFC-e e stato SEFAZ, fatturazione bancaria FEBRABAN/CNAB (Code 128), ERP Protheus, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
     <p class="skills-line"><b>Infrastruttura &amp; Linux:</b> amministrazione VPS Ubuntu, Docker/Docker Compose, Caddy con HTTPS, SSH, DNS, firewall, script di deploy in Bash/PowerShell</p>
-    <p class="skills-line"><b>Hardware &amp; protocolli:</b> misuratori TSL 350 (TCP/hex), DLL CompanyTec, NFC, seriale, DVRIP (telecamere), stampanti Godex/ZPL, servizi Windows</p>
+    <p class="skills-line"><b>Hardware &amp; protocolli:</b> misuratori TSL 350 (TCP/hex), DLL CompanyTec, concentratori, NFC, seriale, DVRIP (telecamere), stampanti Godex/ZPL, servizi Windows</p>
     <p class="skills-line"><b>Versionamento &amp; rete:</b> Git su tutti i progetti, auto-update via GitHub Releases con fallback FTP, VPN propria (WireGuard)</p>
     <p class="skills-line"><b>IA &amp; automazione:</b> Ollama/LLM locali, Stable Diffusion, OCR, report programmati, fatturazione automatica</p>
 
-    <h2>Progetti in evidenza</h2>
-    <div class="proj-cv"><b>DTC AXIS — Piattaforma BI per stazioni di servizio.</b> Dashboard, monitoraggio fiscale SEFAZ in tempo reale, sistemi di fatturazione bancaria brasiliana (FEBRABAN), fatturazione via WhatsApp e assistente IA locale. (Flask + React + PostgreSQL + Ollama)</div>
-    <div class="proj-cv"><b>Portale Clienti.</b> Estratti flotte e sistemi di fatturazione bancaria brasiliana (FEBRABAN) di 7 banche, con codice a barre Code 128 in PDF. (Node/Express + React + PostgreSQL)</div>
-    <div class="proj-cv"><b>DTC Sync.</b> Server centrale di API + agente Windows con auto-aggiornamento installato presso ogni cliente. (FastAPI + Windows Service + GitHub Releases + fallback FTP)</div>
-    <div class="proj-cv"><b>Automazione WhatsApp.</b> Fatturazione e invio massivo con pannello web, sessione persistente e avvisi integrati. (whatsapp-web.js + FastAPI)</div>
-    <div class="proj-cv"><b>DTC Flotte.</b> Gestione rifornimenti integrata con misuratori di serbatoio via TCP/IP, app Android NFC e app OCR. (Delphi + Android)</div>
-    <div class="proj-cv"><b>Accesso Remoto proprio.</b> Strumento in stile AnyDesk costruito da zero con Electron + socket.io.</div>
-    <div class="proj-cv"><b>Digitaliza — SaaS multi-tenant.</b> Piattaforma di gestione e prenotazione per reti di aziende (questo sito), FastAPI + PostgreSQL + Docker su VPS.</div>
-
     <h2>Informazioni aggiuntive</h2>
     <ul>
-      <li><b>In possesso di diritto al soggiorno e al lavoro in Italia</b> (coniuge di cittadina italiana) — nessun visto o sponsorizzazione necessaria.</li>
-      <li>Disponibile per progetti in presenza e da remoto; auto propria.</li>
-      <li>Esperienza in assistenza clienti, implementazione e formazione.</li>
-      <li>Oltre 25 progetti realizzati da solo — portfolio su douglasfbonfim.github.io/curriculo, digitalizaapp.tech/curriculo e github.com/DouglasFBonfim.</li>
+      <li><b>Diritto al soggiorno e al lavoro in Italia</b> (coniuge di cittadina italiana).</li>
+      <li>Disponibile per remoto, ibrido e in presenza; auto propria.</li>
+      <li>Portfolio: douglasfbonfim.github.io/curriculo · github.com/DouglasFBonfim</li>
     </ul>
   </div>
 </div>
@@ -1219,11 +1266,12 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       </article>
 
       <article class="proj">
-        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecosistema distribuito</h3><span class="cat">Server centrale + agente Windows</span></div></div>
-        <p>Architettura distribuita: server centrale con API REST pubblica (FastAPI, Swagger,
-        metriche, VPN WireGuard) e agente installato presso ogni cliente con auto-aggiornamento
-        via GitHub Releases, watchdog come servizio Windows e interfaccia locale di configurazione.</p>
-        <div class="chips"><span class="chip">FastAPI</span><span class="chip">asyncpg / MySQL</span><span class="chip">Windows Service</span><span class="chip">Auto-update</span><span class="chip">WireGuard</span></div>
+        <div class="top"><span class="pico">🔄</span><div><h3>DTC Sync — Ecosistema distribuito</h3><span class="cat">Server + agente + Client desktop + Android</span></div></div>
+        <p>Stack completo: server centrale (API REST, flag di esecuzione NF-e/NFC-e, VPN) + agente
+        Windows in stazione (ConfigServer.ini, watchdog, sync moduli) + Client in tray per
+        autorizzare il PDV e scaricare Dashboard/PontoBR/Portal + app Android (Kotlin/Compose) con
+        biometria, WireGuard e liberazione remota del cassa.</p>
+        <div class="chips"><span class="chip">FastAPI</span><span class="chip">Python / CustomTkinter</span><span class="chip">Kotlin Compose</span><span class="chip">Windows Service</span><span class="chip">WireGuard</span><span class="chip">Biometria</span></div>
       </article>
 
       <article class="proj">
