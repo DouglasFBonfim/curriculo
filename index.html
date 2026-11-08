@@ -319,14 +319,21 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     <div class="proj-cv"><b>DTC Frota</b> — abastecimento + medidores TCP/IP + app Android NFC e OCR. (Delphi + Android)</div>
     <div class="proj-cv"><b>Acesso Remoto</b> — ferramenta estilo AnyDesk (Electron + socket.io).</div>
 
+    <div class="proj-cv"><b>Módulo Dashboard / AXIS</b> — BI operacional com tema claro/escuro e indicadores do posto. (Flask + React)</div>
+    <div class="proj-cv"><b>Ponto BR</b> — agendamento SQL + e-mails HTML e cobrança com boleto. (Python + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Monitor</b> — portal interno: ocorrências, licenças, helpdesk e SEFAZ em PDF. (PHP)</div>
+    <div class="proj-cv"><b>Atualizador de Relatórios</b> — hub cliente/servidor com sync multi-banco. (Delphi + API)</div>
+    <div class="proj-cv"><b>Integrações</b> — Protheus (financeiro), STOP (TXT contábil), Itaú/PIX e planos de contas. (Delphi)</div>
+    <div class="proj-cv"><b>DTC Backup / Cam Monitor</b> — backup multi-SGBD e descoberta de câmeras DVRIP/Sofia.</div>
+
     <h2>Formação acadêmica</h2>
     <p class="proj-cv"><b>Análise e Desenvolvimento de Sistemas</b> — FASUL<br/>
     <b>jun/2024 – set/2026</b> · Tecnólogo · Concluído</p>
 
     <h2>Competências técnicas</h2>
-    <p class="skills-line"><b>Linguagens:</b> Python (FastAPI/Flask), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin), SQL</p>
-    <p class="skills-line"><b>Bancos:</b> PostgreSQL, MySQL, SQLite, SQL Server, Oracle — triggers, views, replicação</p>
-    <p class="skills-line"><b>Integrações:</b> NF-e/NFC-e e status SEFAZ, boletos FEBRABAN/CNAB (Code 128), ERP Protheus, SINTEGRA, WhatsApp (whatsapp-web.js)</p>
+    <p class="skills-line"><b>Linguagens:</b> Python (FastAPI/Flask/CustomTkinter), Delphi, Node.js/Express, React + TypeScript, PHP, Android (Java/Kotlin/Compose), Electron, SQL</p>
+    <p class="skills-line"><b>Bancos:</b> PostgreSQL, MySQL, SQLite/Room, SQL Server, Oracle — triggers, views, functions, sync multi-banco</p>
+    <p class="skills-line"><b>Integrações:</b> NF-e/NFC-e e SEFAZ, boletos FEBRABAN/CNAB (Code 128), Protheus, STOP, PIX/Itaú, SINTEGRA, WhatsApp</p>
     <p class="skills-line"><b>Infra &amp; Linux:</b> administração de VPS Ubuntu, Docker/Docker Compose, Caddy com HTTPS, SSH, DNS, firewall, scripts de deploy em Bash/PowerShell</p>
     <p class="skills-line"><b>Hardware &amp; protocolos:</b> medidores TSL 350 (TCP/hex), DLL CompanyTec, concentradores, NFC, serial, DVRIP (câmeras), impressoras Godex/ZPL, Windows Services</p>
     <p class="skills-line"><b>Versionamento &amp; rede:</b> Git em todos os projetos, auto-update via GitHub Releases com fallback FTP, VPN própria (WireGuard)</p>
@@ -486,6 +493,34 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">GPU local</span></div>
       </article>
 
+      <article class="proj">
+        <div class="top"><span class="pico">📈</span><div><h3>Módulo Dashboard</h3><span class="cat">BI operacional · Flask/React</span></div></div>
+        <p>Dashboard instalado no cliente via DTC Sync: indicadores de vendas, estoque e status
+        fiscal, tema claro/escuro e atualização remota pelo agente Windows.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Auto-update</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Portal interno · helpdesk</span></div></div>
+        <p>Monitoramento da base: ocorrências, licenças por empresa, abertura automática de
+        chamados, agenda de técnicos, alertas WhatsApp e relatórios SEFAZ em PDF.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔗</span><div><h3>Integrações ERP / Contábil / Bancária</h3><span class="cat">Delphi · produção</span></div></div>
+        <p>Linha de integrações: sync financeiro Protheus, exportação STOP para contabilidade,
+        geração de TXT/PIX (Itaú e demais) e sincronização de planos de contas entre empresas.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Protheus</span><span class="chip">STOP / TXT</span><span class="chip">PIX / CNAB</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Atualizador de Relatórios</h3><span class="cat">Hub cliente/servidor</span></div></div>
+        <p>Distribuição e sync de relatórios entre matriz e postos: API REST, sincronização
+        transacional, monitoramento multi-banco e empacotamento Windows.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">API REST</span><span class="chip">Multi-banco</span><span class="chip">Windows</span></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -554,37 +589,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       <div class="card skill-block">
         <h3>Linguagens & Frameworks</h3>
         <div class="chips">
-          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
-          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
-          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">SQL avançado</span>
+          <span class="chip">Python (FastAPI, Flask, CustomTkinter)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript / Vite</span>
+          <span class="chip">PHP</span><span class="chip">Android Java + Kotlin / Jetpack Compose</span>
+          <span class="chip">Electron + socket.io</span><span class="chip">SQL avançado</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Bancos de dados</h3>
         <div class="chips">
-          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
-          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Triggers & views</span>
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite / Room</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span>
+          <span class="chip">Triggers, views, functions</span><span class="chip">Replicação / sync multi-banco</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Integrações Brasil</h3>
         <div class="chips">
           <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">Boletos FEBRABAN / CNAB</span>
-          <span class="chip">Código de barras Code 128</span><span class="chip">ERP Protheus</span><span class="chip">SINTEGRA</span>
+          <span class="chip">Código de barras Code 128</span><span class="chip">ERP Protheus</span>
+          <span class="chip">SINTEGRA</span><span class="chip">STOP (TXT contábil)</span><span class="chip">PIX / Itaú</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Automação & Mensageria</h3>
         <div class="chips">
           <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">E-mail SMTP/HTML</span>
-          <span class="chip">Windows Services / watchdog</span><span class="chip">Relatórios agendados</span><span class="chip">Auto-update</span>
+          <span class="chip">Windows Services / watchdog</span><span class="chip">PontoBR (SQL agendado)</span>
+          <span class="chip">Auto-update GitHub/FTP</span><span class="chip">Autorização PDV (desktop + Android)</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Hardware & Protocolos</h3>
         <div class="chips">
-          <span class="chip">Medidor TSL 350 (TCP/hex)</span><span class="chip">DVRIP/Sofia (câmeras)</span>
-          <span class="chip">NFC</span><span class="chip">Serial / FTP</span><span class="chip">Impressoras Godex/ZPL</span>
+          <span class="chip">Medidor TSL 350 (TCP/hex)</span><span class="chip">DLL / concentradores</span>
+          <span class="chip">DVRIP/Sofia (câmeras)</span><span class="chip">NFC</span>
+          <span class="chip">Biometria</span><span class="chip">Serial / FTP</span><span class="chip">Impressoras Godex/ZPL</span>
         </div>
       </div>
       <div class="card skill-block">
@@ -604,6 +644,26 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         </div>
       </div>
     </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <span class="kicker">Catálogo</span>
+      <h2 style="font-size:24px">Sistemas onde essas skills aparecem</h2>
+      <p>Mapa rápido dos produtos em produção (Datacom + próprios).</p>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Sync (Server + Agente + Client + Android)</b> — FastAPI, Windows Service, CustomTkinter, Kotlin Compose, WireGuard, biometria, auto-update.</li>
+      <li><b>DTC AXIS / Dashboard</b> — Flask + React + PostgreSQL, SEFAZ, boletos, WhatsApp, IA local.</li>
+      <li><b>Portal do Cliente</b> — Node/Express + React, boletos Code 128 de 7 bancos, frota e PDF.</li>
+      <li><b>Ponto BR</b> — Python + PostgreSQL, SQL agendado, e-mail HTML, cobrança com boleto.</li>
+      <li><b>DTC Frota + Android NFC/OCR</b> — Delphi, TCP/hex (TSL 350), NFC, OCR de placa/hodômetro.</li>
+      <li><b>DTC Monitor + Helpdesk</b> — PHP, MySQL/PostgreSQL, chamados, licenças, SEFAZ em PDF.</li>
+      <li><b>WhatsApp Automação</b> — whatsapp-web.js, filas, cobrança e alertas.</li>
+      <li><b>Integrações Delphi</b> — Protheus, STOP, Itaú/PIX, planos de contas, Atualizador de Relatórios.</li>
+      <li><b>Acesso Remoto</b> — Electron + socket.io + nut-js (estilo AnyDesk).</li>
+      <li><b>Digitaliza (ERP/SaaS) + Android offline</b> — FastAPI, PostgreSQL, Room, Docker/Caddy.</li>
+      <li><b>Backup / Cam / Boletos / Coletor</b> — multi-SGBD, DVRIP/Sofia, FEBRABAN, app Kotlin de campo.</li>
+      <li><b>DigitalizaIA</b> — Ollama, Stable Diffusion, workspace de código local.</li>
+    </ul>
   </div>
 </section>
 
@@ -652,11 +712,14 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       <h2 style="font-size:24px">E mais ferramentas</h2>
     </div>
     <ul class="mini-list">
+      <li><b>DTC Sync Client</b> — desktop na bandeja: autorização do PDV, VPN, importação e sync de módulos.</li>
+      <li><b>DTC Sync Android</b> — Kotlin/Compose com biometria, VPN e liberação remota do PDV.</li>
       <li><b>DTC Backup</b> — backup agendado de PostgreSQL, MySQL, SQL Server e Oracle com painel web e senhas cifradas.</li>
       <li><b>Cam Monitor</b> — descoberta e snapshot de câmeras/DVRs na rede implementando o protocolo DVRIP/Sofia.</li>
       <li><b>Consulta Boletos</b> — consulta e regenera boletos FEBRABAN com código de barras a partir do ERP.</li>
-      <li><b>Integração Contábil</b> — sincroniza planos de contas entre empresas no PostgreSQL.</li>
+      <li><b>Integração Contábil / Protheus / STOP / Itaú</b> — planos de contas, sync financeiro, TXT contábil e PIX.</li>
       <li><b>Atualizador de Relatórios</b> — hub cliente/servidor com API REST, sincronização transacional e monitoramento multi-banco.</li>
+      <li><b>Digitaliza System / Escola / Orçamentos</b> — ERP comercial, gestão escolar e pedidos com PDF.</li>
       <li><b>Ajuste MS-DOS</b> — importa e corrige arquivos TXT legados de estoque para o banco.</li>
       <li><b>Catálogo de Projetos</b> — servidor web que organiza PDFs por tema com extração de texto e OCR.</li>
       <li><b>Mercadinho do Bairro</b> — jogo simulador de supermercado em desenvolvimento (Unreal Engine 5).</li>
@@ -729,6 +792,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     <div class="proj-cv"><b>WhatsApp Automation</b> — bulk billing with web panel. (whatsapp-web.js + FastAPI)</div>
     <div class="proj-cv"><b>DTC Fleet</b> — fueling + TCP/IP gauges + Android NFC/OCR. (Delphi + Android)</div>
     <div class="proj-cv"><b>Remote Access</b> — AnyDesk-style tool (Electron + socket.io).</div>
+
+    <div class="proj-cv"><b>Dashboard / AXIS module</b> — operational BI with light/dark theme and station KPIs. (Flask + React)</div>
+    <div class="proj-cv"><b>Ponto BR</b> — SQL scheduling + HTML e-mail and billing with slips. (Python + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Monitor</b> — internal portal: incidents, licenses, helpdesk and SEFAZ PDFs. (PHP)</div>
+    <div class="proj-cv"><b>Report Updater</b> — client/server hub with multi-database sync. (Delphi + API)</div>
+    <div class="proj-cv"><b>Integrations</b> — Protheus (finance), STOP (accounting TXT), Itaú/PIX and chart of accounts. (Delphi)</div>
+    <div class="proj-cv"><b>DTC Backup / Cam Monitor</b> — multi-DB backup and DVRIP/Sofia camera discovery.</div>
 
     <h2>Education</h2>
     <p class="proj-cv"><b>Systems Analysis and Development</b> — FASUL<br/>
@@ -896,6 +966,34 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">Local GPU</span></div>
       </article>
 
+      <article class="proj">
+        <div class="top"><span class="pico">📈</span><div><h3>Dashboard Module</h3><span class="cat">Operational BI · Flask/React</span></div></div>
+        <p>Client-side dashboard deployed via DTC Sync: sales/inventory KPIs, fiscal status,
+        light/dark theme and remote updates through the Windows agent.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Auto-update</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Internal portal · helpdesk</span></div></div>
+        <p>Fleet-wide monitoring: incidents, per-company licenses, automatic ticket creation,
+        technician schedule, WhatsApp alerts and SEFAZ status PDFs.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔗</span><div><h3>ERP / Accounting / Banking integrations</h3><span class="cat">Delphi · production</span></div></div>
+        <p>Integration line: Protheus financial sync, STOP export for accounting, TXT/PIX
+        generation (Itaú and others) and chart-of-accounts sync across companies.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Protheus</span><span class="chip">STOP / TXT</span><span class="chip">PIX / CNAB</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Report Updater</h3><span class="cat">Client/server hub</span></div></div>
+        <p>Report distribution and sync between HQ and stations: REST API, transactional sync,
+        multi-database monitoring and Windows packaging.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">REST API</span><span class="chip">Multi-DB</span><span class="chip">Windows</span></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -964,37 +1062,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       <div class="card skill-block">
         <h3>Languages &amp; Frameworks</h3>
         <div class="chips">
-          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
-          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
-          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">Advanced SQL</span>
+          <span class="chip">Python (FastAPI, Flask, CustomTkinter)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript / Vite</span>
+          <span class="chip">PHP</span><span class="chip">Android Java + Kotlin / Jetpack Compose</span>
+          <span class="chip">Electron + socket.io</span><span class="chip">Advanced SQL</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Databases</h3>
         <div class="chips">
-          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
-          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Triggers &amp; views</span>
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite / Room</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span>
+          <span class="chip">Triggers, views, functions</span><span class="chip">Replication / multi-DB sync</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Brazil integrations</h3>
         <div class="chips">
           <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">FEBRABAN / CNAB slips</span>
-          <span class="chip">Code 128 barcodes</span><span class="chip">Protheus ERP</span><span class="chip">SINTEGRA</span>
+          <span class="chip">Code 128 barcodes</span><span class="chip">Protheus ERP</span>
+          <span class="chip">SINTEGRA</span><span class="chip">STOP (accounting TXT)</span><span class="chip">PIX / Itaú</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Automation &amp; Messaging</h3>
         <div class="chips">
           <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">SMTP/HTML e-mail</span>
-          <span class="chip">Windows Services / watchdog</span><span class="chip">Scheduled reports</span><span class="chip">Auto-update</span>
+          <span class="chip">Windows Services / watchdog</span><span class="chip">PontoBR (scheduled SQL)</span>
+          <span class="chip">GitHub/FTP auto-update</span><span class="chip">POS authorization (desktop + Android)</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Hardware &amp; Protocols</h3>
         <div class="chips">
-          <span class="chip">TSL 350 gauge (TCP/hex)</span><span class="chip">DVRIP/Sofia (cameras)</span>
-          <span class="chip">NFC</span><span class="chip">Serial / FTP</span><span class="chip">Godex/ZPL printers</span>
+          <span class="chip">TSL 350 gauge (TCP/hex)</span><span class="chip">DLL / concentrators</span>
+          <span class="chip">DVRIP/Sofia (cameras)</span><span class="chip">NFC</span>
+          <span class="chip">Biometrics</span><span class="chip">Serial / FTP</span><span class="chip">Godex/ZPL printers</span>
         </div>
       </div>
       <div class="card skill-block">
@@ -1014,6 +1117,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         </div>
       </div>
     </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <span class="kicker">Catalog</span>
+      <h2 style="font-size:24px">Systems where these skills show up</h2>
+      <p>Quick map of products in production (Datacom + own).</p>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Sync (Server + Agent + Client + Android)</b> — FastAPI, Windows Service, CustomTkinter, Kotlin Compose, WireGuard, biometrics, auto-update.</li>
+      <li><b>DTC AXIS / Dashboard</b> — Flask + React + PostgreSQL, SEFAZ, slips, WhatsApp, local AI.</li>
+      <li><b>Customer Portal</b> — Node/Express + React, Code 128 slips for 7 banks, fleet and PDF.</li>
+      <li><b>Ponto BR</b> — Python + PostgreSQL, scheduled SQL, HTML e-mail, billing with slips.</li>
+      <li><b>DTC Fleet + Android NFC/OCR</b> — Delphi, TCP/hex (TSL 350), NFC, plate/odometer OCR.</li>
+      <li><b>DTC Monitor + Helpdesk</b> — PHP, MySQL/PostgreSQL, tickets, licenses, SEFAZ PDFs.</li>
+      <li><b>WhatsApp Automation</b> — whatsapp-web.js, queues, billing and alerts.</li>
+      <li><b>Delphi integrations</b> — Protheus, STOP, Itaú/PIX, chart of accounts, Report Updater.</li>
+      <li><b>Remote Access</b> — Electron + socket.io + nut-js (AnyDesk-style).</li>
+      <li><b>Digitaliza (ERP/SaaS) + offline Android</b> — FastAPI, PostgreSQL, Room, Docker/Caddy.</li>
+      <li><b>Backup / Cam / Slips / Collector</b> — multi-DB, DVRIP/Sofia, FEBRABAN, Kotlin field app.</li>
+      <li><b>DigitalizaIA</b> — Ollama, Stable Diffusion, local code workspace.</li>
+    </ul>
+
   </div>
 </section>
 
@@ -1140,6 +1264,13 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
     <div class="proj-cv"><b>Automazione WhatsApp</b> — fatturazione massiva con pannello web. (whatsapp-web.js + FastAPI)</div>
     <div class="proj-cv"><b>DTC Flotte</b> — rifornimenti + misuratori TCP/IP + Android NFC/OCR. (Delphi + Android)</div>
     <div class="proj-cv"><b>Accesso Remoto</b> — strumento stile AnyDesk (Electron + socket.io).</div>
+
+    <div class="proj-cv"><b>Modulo Dashboard / AXIS</b> — BI operativo con tema chiaro/scuro e KPI della stazione. (Flask + React)</div>
+    <div class="proj-cv"><b>Ponto BR</b> — scheduling SQL + e-mail HTML e fatturazione con bollettini. (Python + PostgreSQL)</div>
+    <div class="proj-cv"><b>DTC Monitor</b> — portale interno: eventi, licenze, helpdesk e SEFAZ in PDF. (PHP)</div>
+    <div class="proj-cv"><b>Aggiornatore Report</b> — hub client/server con sync multi-database. (Delphi + API)</div>
+    <div class="proj-cv"><b>Integrazioni</b> — Protheus (finanza), STOP (TXT contabile), Itaú/PIX e piani dei conti. (Delphi)</div>
+    <div class="proj-cv"><b>DTC Backup / Cam Monitor</b> — backup multi-DB e discovery telecamere DVRIP/Sofia.</div>
 
     <h2>Formazione</h2>
     <p class="proj-cv"><b>Analisi e Sviluppo di Sistemi</b> — FASUL<br/>
@@ -1314,6 +1445,34 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         <div class="chips"><span class="chip">Ollama / LLM</span><span class="chip">Stable Diffusion</span><span class="chip">FastAPI</span><span class="chip">GPU locale</span></div>
       </article>
 
+      <article class="proj">
+        <div class="top"><span class="pico">📈</span><div><h3>Modulo Dashboard</h3><span class="cat">BI operativo · Flask/React</span></div></div>
+        <p>Dashboard sul cliente via DTC Sync: KPI di vendita/scorte, stato fiscale, tema
+        chiaro/scuro e aggiornamento remoto tramite agente Windows.</p>
+        <div class="chips"><span class="chip">Flask</span><span class="chip">React</span><span class="chip">PostgreSQL</span><span class="chip">Auto-update</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🖥️</span><div><h3>DTC Monitor</h3><span class="cat">Portale interno · helpdesk</span></div></div>
+        <p>Monitoraggio della base: eventi, licenze per azienda, ticket automatici, agenda
+        tecnici, alert WhatsApp e report SEFAZ in PDF.</p>
+        <div class="chips"><span class="chip">PHP</span><span class="chip">MySQL + PostgreSQL</span><span class="chip">dompdf</span><span class="chip">Helpdesk</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">🔗</span><div><h3>Integrazioni ERP / Contabile / Bancarie</h3><span class="cat">Delphi · produzione</span></div></div>
+        <p>Linea di integrazioni: sync finanziario Protheus, export STOP per contabilità,
+        generazione TXT/PIX (Itaú e altri) e sync dei piani dei conti tra aziende.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">Protheus</span><span class="chip">STOP / TXT</span><span class="chip">PIX / CNAB</span></div>
+      </article>
+
+      <article class="proj">
+        <div class="top"><span class="pico">📦</span><div><h3>Aggiornatore Report</h3><span class="cat">Hub client/server</span></div></div>
+        <p>Distribuzione e sync dei report tra sede e stazioni: API REST, sync transazionale,
+        monitoraggio multi-database e packaging Windows.</p>
+        <div class="chips"><span class="chip">Delphi</span><span class="chip">API REST</span><span class="chip">Multi-DB</span><span class="chip">Windows</span></div>
+      </article>
+
     </div>
   </div>
 </section>
@@ -1382,37 +1541,42 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
       <div class="card skill-block">
         <h3>Linguaggi e framework</h3>
         <div class="chips">
-          <span class="chip">Python (FastAPI, Flask)</span><span class="chip">Delphi / Object Pascal</span>
-          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript</span>
-          <span class="chip">PHP</span><span class="chip">Android (Java/Kotlin)</span><span class="chip">SQL avanzato</span>
+          <span class="chip">Python (FastAPI, Flask, CustomTkinter)</span><span class="chip">Delphi / Object Pascal</span>
+          <span class="chip">Node.js / Express</span><span class="chip">React 19 + TypeScript / Vite</span>
+          <span class="chip">PHP</span><span class="chip">Android Java + Kotlin / Jetpack Compose</span>
+          <span class="chip">Electron + socket.io</span><span class="chip">SQL avanzato</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Database</h3>
         <div class="chips">
-          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span>
-          <span class="chip">SQL Server</span><span class="chip">Oracle</span><span class="chip">Trigger e view</span>
+          <span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">SQLite / Room</span>
+          <span class="chip">SQL Server</span><span class="chip">Oracle</span>
+          <span class="chip">Trigger, view, function</span><span class="chip">Replica / sync multi-DB</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Integrazioni Brasile</h3>
         <div class="chips">
           <span class="chip">NF-e / NFC-e (SEFAZ)</span><span class="chip">Fatturazione FEBRABAN / CNAB</span>
-          <span class="chip">Codice a barre Code 128</span><span class="chip">ERP Protheus</span><span class="chip">SINTEGRA</span>
+          <span class="chip">Codice a barre Code 128</span><span class="chip">ERP Protheus</span>
+          <span class="chip">SINTEGRA</span><span class="chip">STOP (TXT contabile)</span><span class="chip">PIX / Itaú</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Automazione e messaggistica</h3>
         <div class="chips">
           <span class="chip">WhatsApp (whatsapp-web.js)</span><span class="chip">E-mail SMTP/HTML</span>
-          <span class="chip">Servizi Windows / watchdog</span><span class="chip">Report programmati</span><span class="chip">Auto-update</span>
+          <span class="chip">Servizi Windows / watchdog</span><span class="chip">PontoBR (SQL schedulato)</span>
+          <span class="chip">Auto-update GitHub/FTP</span><span class="chip">Autorizzazione PDV (desktop + Android)</span>
         </div>
       </div>
       <div class="card skill-block">
         <h3>Hardware e protocolli</h3>
         <div class="chips">
-          <span class="chip">Misuratore TSL 350 (TCP/hex)</span><span class="chip">DVRIP/Sofia (telecamere)</span>
-          <span class="chip">NFC</span><span class="chip">Seriale / FTP</span><span class="chip">Stampanti Godex/ZPL</span>
+          <span class="chip">Misuratore TSL 350 (TCP/hex)</span><span class="chip">DLL / concentratori</span>
+          <span class="chip">DVRIP/Sofia (telecamere)</span><span class="chip">NFC</span>
+          <span class="chip">Biometria</span><span class="chip">Seriale / FTP</span><span class="chip">Stampanti Godex/ZPL</span>
         </div>
       </div>
       <div class="card skill-block">
@@ -1432,6 +1596,27 @@ footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wr
         </div>
       </div>
     </div>
+
+    <div class="sec-head" style="margin-top:44px">
+      <span class="kicker">Catalogo</span>
+      <h2 style="font-size:24px">Sistemi in cui compaiono queste skill</h2>
+      <p>Mappa rapida dei prodotti in produzione (Datacom + propri).</p>
+    </div>
+    <ul class="mini-list">
+      <li><b>DTC Sync (Server + Agente + Client + Android)</b> — FastAPI, Windows Service, CustomTkinter, Kotlin Compose, WireGuard, biometria, auto-update.</li>
+      <li><b>DTC AXIS / Dashboard</b> — Flask + React + PostgreSQL, SEFAZ, bollettini, WhatsApp, IA locale.</li>
+      <li><b>Portale Clienti</b> — Node/Express + React, Code 128 di 7 banche, flotte e PDF.</li>
+      <li><b>Ponto BR</b> — Python + PostgreSQL, SQL schedulato, e-mail HTML, fatturazione.</li>
+      <li><b>DTC Flotte + Android NFC/OCR</b> — Delphi, TCP/hex (TSL 350), NFC, OCR targa/contachilometri.</li>
+      <li><b>DTC Monitor + Helpdesk</b> — PHP, MySQL/PostgreSQL, ticket, licenze, SEFAZ in PDF.</li>
+      <li><b>Automazione WhatsApp</b> — whatsapp-web.js, code, fatturazione e alert.</li>
+      <li><b>Integrazioni Delphi</b> — Protheus, STOP, Itaú/PIX, piani dei conti, Aggiornatore Report.</li>
+      <li><b>Accesso Remoto</b> — Electron + socket.io + nut-js (stile AnyDesk).</li>
+      <li><b>Digitaliza (ERP/SaaS) + Android offline</b> — FastAPI, PostgreSQL, Room, Docker/Caddy.</li>
+      <li><b>Backup / Cam / Bollettini / Coletor</b> — multi-DB, DVRIP/Sofia, FEBRABAN, app Kotlin.</li>
+      <li><b>DigitalizaIA</b> — Ollama, Stable Diffusion, workspace di codice locale.</li>
+    </ul>
+
   </div>
 </section>
 
